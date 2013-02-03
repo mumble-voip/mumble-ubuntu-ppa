@@ -10,9 +10,10 @@ OPTIONS=${*:4}
 BUILD=0
 DRY_RUN=0
 TARGET=""
+REPO=""
 
 function usage() {
-	echo "ppagen.bash <version> <dist> <ppaver< [options]"
+	echo "ppagen.bash <version> <dist> <ppaver> [options]"
 	echo
 	echo "Generates an Ubuntu ppa for mumble \$VERSION for Ubuntu \$DIST"
 	echo "and uploads it to the Mumble team's PPA."
@@ -50,6 +51,8 @@ fi
 if [[ "${OPTIONS}" == *"--dry-run"* ]]; then
 	DRY_RUN=1
 	echo "In dry-run mode. will not upload any resulting products."
+else
+	REPO="${PWD}"
 fi
 
 if [[ "${OPTIONS}" == *"--build"* ]]; then
@@ -76,6 +79,13 @@ if [ $BUILD -eq 0 ]; then
 	fi
 fi
 
+if [[ ! -f "${PWD}/changelog" || ! -d "${PWD}/.git" ]]; then
+	echo "Not run from the mumble-ubuntu-ppa repo. Bailing."
+	exit 1
+else
+	REPO="${PWD}"
+fi
+
 DEBVER="-1~ppa${PPAVER}~${DIST}1"
 echo "Debian version set to ${DEBVER}"
 
@@ -86,7 +96,7 @@ wget http://mumble.info/snapshot/mumble-${VERSION}.tar.gz.sig -O mumble_${VERSIO
 gpg --verify mumble_${VERSION}.orig.tar.gz.sig
 tar -zxf mumble_${VERSION}.orig.tar.gz
 cd mumble-${VERSION}
-git clone git://github.com/mumble-voip/mumble-ubuntu-ppa.git debian
+git clone ${REPO} debian
 if [ -x debian/backports/${DIST} ]; then perl debian/backports/${DIST}; fi
 cd debian
 dch -v ${VERSION}${DEBVER} -D ${DIST} "PPA Upload of ${VERSION} snapshot for Ubuntu ${DIST}"
