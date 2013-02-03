@@ -1,0 +1,81 @@
+# Dutch translation of mumble debconf templates.
+# Copyright (C) 2012 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the mumble package.
+# Jeroen Schot <schot@a-eskwadraat.nl>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mumble 1.2.3-2\n"
+"Report-Msgid-Bugs-To: mumble@packages.debian.org\n"
+"POT-Creation-Date: 2010-01-11 16:52+0100\n"
+"PO-Revision-Date: 2012-01-27 16:12+0100\n"
+"Last-Translator: Jeroen Schot <schot@a-eskwadraat.nl>\n"
+"Language-Team: Debian l10n Dutch <debian-l10n-dutch@lists.debian.org>\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: password
+#. Description
+#: ../mumble-server.templates:1001
+msgid "Password to set on SuperUser account:"
+msgstr "Wachtwoord voor het SuperUser-account:"
+
+#. Type: password
+#. Description
+#: ../mumble-server.templates:1001
+msgid ""
+"Murmur has a special account called \"SuperUser\" which bypasses all "
+"privilege checks."
+msgstr ""
+"Murmur heeft een speciaal account genaamd \"SuperUser\" welke alle "
+"privilegecontroles omzeilt."
+
+#. Type: password
+#. Description
+#: ../mumble-server.templates:1001
+msgid ""
+"If you set a password here, the password for the \"SuperUser\" account will "
+"be updated."
+msgstr ""
+"Als u hier een wachtwoord opgeeft zal het wachtwoord voor het \"SuperUser\"-"
+"account worden bijgewerkt."
+
+#. Type: password
+#. Description
+#: ../mumble-server.templates:1001
+msgid "If you leave this blank, the password will not be changed."
+msgstr "Als u dit leeg laat zal het wachtwoord niet worden gewijzigd."
+
+#. Type: boolean
+#. Description
+#: ../mumble-server.templates:2001
+msgid "Autostart mumble-server on server boot?"
+msgstr "Mumble-server automatisch starten bij de systeemstart?"
+
+#. Type: boolean
+#. Description
+#: ../mumble-server.templates:2001
+msgid ""
+"Mumble-server (murmurd) can start automatically when the server is booted."
+msgstr ""
+"Mumble-server (murmurd) kan automatisch starten wanneer de server wordt "
+"opgestart."
+
+#. Type: boolean
+#. Description
+#: ../mumble-server.templates:3001
+msgid "Allow mumble-server to use higher priority?"
+msgstr "Mumble-server toestaan om een hogere prioriteit te gebruiken?"
+
+#. Type: boolean
+#. Description
+#: ../mumble-server.templates:3001
+msgid ""
+"Mumble-server (murmurd) can use higher process and network priority to "
+"ensure low latency audio forwarding even on highly loaded servers."
+msgstr ""
+"Mumble-server (murmurd) kan een hogere proces- en netwerkprioriteit "
+"gebruiken om te zorgen voor audio-doorsturen met een minimale vertraging, "
+"zelfs op zwaarbelaste servers."

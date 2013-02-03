@@ -1,0 +1,3 @@
+release/murmurd usr/sbin/
+scripts/murmur-user-wrapper usr/bin/
+src/murmur/Murmur.ice usr/share/slice

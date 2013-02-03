@@ -1,0 +1,85 @@
+# translation of ru.po to Russian
+# Copyright (C) 2008
+# This file is distributed under the same license as the mumble package.
+#
+# Yuri Kozlov <kozlov.y@gmail.com>, 2008.
+# Yuri Kozlov <yuray@komyakino.ru>, 2010.
+msgid ""
+msgstr ""
+"Project-Id-Version: mumble 1.2.1-3\n"
+"Report-Msgid-Bugs-To: mumble@packages.debian.org\n"
+"POT-Creation-Date: 2010-01-11 16:52+0100\n"
+"PO-Revision-Date: 2010-01-11 20:40+0300\n"
+"Last-Translator: Yuri Kozlov <yuray@komyakino.ru>\n"
+"Language-Team: Russian <debian-l10n-russian@lists.debian.org>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. Type: password
+#. Description
+#: ../mumble-server.templates:1001
+msgid "Password to set on SuperUser account:"
+msgstr "Пароль для учётной записи SuperUser:"
+
+#. Type: password
+#. Description
+#: ../mumble-server.templates:1001
+msgid ""
+"Murmur has a special account called \"SuperUser\" which bypasses all "
+"privilege checks."
+msgstr ""
+"В Murmur есть специальная учётная запись с именем \"SuperUser\", на которую "
+"не действуют никакие проверки и ограничения."
+
+#. Type: password
+#. Description
+#: ../mumble-server.templates:1001
+msgid ""
+"If you set a password here, the password for the \"SuperUser\" account will "
+"be updated."
+msgstr ""
+"Если вы введёте здесь пароль, то он заменит имеющийся пароль для учётной "
+"записи \"SuperUser\"."
+
+#. Type: password
+#. Description
+#: ../mumble-server.templates:1001
+msgid "If you leave this blank, the password will not be changed."
+msgstr "Если вы оставите поле пустым, то пароль изменён не будет."
+
+#. Type: boolean
+#. Description
+#: ../mumble-server.templates:2001
+msgid "Autostart mumble-server on server boot?"
+msgstr "Запускать mumble-server при включении компьютера?"
+
+#. Type: boolean
+#. Description
+#: ../mumble-server.templates:2001
+msgid ""
+"Mumble-server (murmurd) can start automatically when the server is booted."
+msgstr ""
+"Mumble-server (murmurd) может запускаться автоматически при включении "
+"компьютера."
+
+#. Type: boolean
+#. Description
+#: ../mumble-server.templates:3001
+msgid "Allow mumble-server to use higher priority?"
+msgstr "Позволять работать mumble-server с более высоким приоритетом?"
+
+#. Type: boolean
+#. Description
+#: ../mumble-server.templates:3001
+msgid ""
+"Mumble-server (murmurd) can use higher process and network priority to "
+"ensure low latency audio forwarding even on highly loaded servers."
+msgstr ""
+"Сервер Mumble-server (murmurd) можно запустить с более высоким приоритетом "
+"для процесса и сети, что позволяет сократить задержку при передаче "
+"аудиоинформации даже на сильно нагруженных серверах."

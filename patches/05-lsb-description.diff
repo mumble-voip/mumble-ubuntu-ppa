@@ -1,0 +1,13 @@
+# Add missing LSB Description to the init script.
+
+diff -Naur mumble-1.2.3-277-g98f4ac1.orig/scripts/murmur.init mumble-1.2.3-277-g98f4ac1/scripts/murmur.init
+--- mumble-1.2.3-277-g98f4ac1.orig/scripts/murmur.init	2012-02-05 14:00:59.000000000 +0100
++++ mumble-1.2.3-277-g98f4ac1/scripts/murmur.init	2012-02-12 16:21:02.870995775 +0100
+@@ -9,6 +9,7 @@
+ # Default-Start:        2 3 4 5
+ # Default-Stop:         0 1 6
+ # Short-Description:    Mumble VoIP Server
++# Description:			init script for the Mumble VoIP Server murmurd.
+ ### END INIT INFO
+ 
+ PATH=/sbin:/bin:/usr/sbin:/usr/bin

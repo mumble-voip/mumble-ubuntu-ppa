@@ -1,0 +1,273 @@
+This package was debianized by Patrick Matthäi <pmatthaei@debian.org>
+on Sun, 16 Mar 2008 11:09:08 +0100.
+
+It was downloaded from <http://mumble.sourceforge.net/>.
+
+
+The directory "speex" contains a copy of the needed speex source code
+used in mumble. It's included in the mumble tarball, and that tarball
+clones it from git://git.xiph.org/speex.git
+
+Upstream Author: Jean-Marc Valin <jean-marc.valin@usherbrooke.ca>
+
+Copyright: 2002-2008 Xiph.org Foundation
+           2002-2008 Jean-Marc Valin
+           2005-2007 Analog Devices Inc.
+           1992-1994 Jutta Degener, Carsten Bormann
+           2003-2004 Mark Borgerding
+           2005      Christopher Montgomery
+           2003      EpicGames
+           2002      Jean-Marc Valin
+           2005-2008 Commonwealth Scientific and Industrial Research
+                     Organisation (CSIRO)
+           1993, 2002, 2006 David Rowe
+
+License:
+
+    Redistribution and use in source and binary forms, with or without
+    modification, are permitted provided that the following conditions
+    are met:
+
+    - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+
+    - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+
+    - Neither the name of the Xiph.org Foundation nor the names of its
+    contributors may be used to endorse or promote products derived from
+    this software without specific prior written permission.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+    ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+    A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION OR
+    CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+    EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+    PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+    PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+    LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+    NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+
+The directory "celt" contains a copy of the needed CELT source code
+used in mumble. It's included in the mumble tarball, and that tarball
+clones it from git://git.xiph.org/celt.git
+
+Copyright 2001-2009 Jean-Marc Valin, Timothy B. Terriberry,
+                    CSIRO, and other contributors
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+  notice, this list of conditions and the following disclaimer.
+
+  - Redistributions in binary form must reproduce the above copyright
+  notice, this list of conditions and the following disclaimer in the
+  documentation and/or other materials provided with the distribution.
+
+  - Neither the name of the Xiph.org Foundation nor the names of its
+  contributors may be used to endorse or promote products derived from
+  this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION OR
+  CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+CELT includes KISS FFT, which is
+  Copyright 2003-2004 Mark Borgerding
+and a number of the source files explicitly credit
+  (C) 2008 Gregory Maxwell
+all under the same license as CELT itself.
+
+celt/libcelt/floag_cast.h is
+  Copyright (C) 2001 Erik de Castro Lopo <erikd AT mega-nerd DOT com>
+
+  Permission to use, copy, modify, distribute, and sell this file for any
+  purpose is hereby granted without fee, provided that the above copyright
+  and this permission notice appear in all copies.  No representations are
+  made about the suitability of this software for any purpose.  It is
+  provided "as is" without express or implied warranty.
+
+celt/libcelt/celt_types.h is "take from libogg"
+  THIS FILE IS PART OF THE OggVorbis SOFTWARE CODEC SOURCE CODE.
+  USE, DISTRIBUTION AND REPRODUCTION OF THIS LIBRARY SOURCE IS
+  GOVERNED BY A BSD-STYLE SOURCE LICENSE INCLUDED WITH THIS SOURCE
+  IN 'COPYING'. PLEASE READ THESE TERMS BEFORE DISTRIBUTING.
+
+  THE OggVorbis SOURCE CODE IS (C) COPYRIGHT 1994-2002
+  by the Xiph.Org Foundation http://www.xiph.org/
+
+The file 'COPYING' in celt is not the one references here, but the full
+license is included below as Mumble itself also borrows files from the Ogg
+Vorbis project.
+
+
+
+The files src/mumble/smallft.cpp and src/mumble/smallft.h are copied from the
+Ogg Vorbis project. They are also licensed under the BSD(revised) license:
+
+Copyright 2002-2007 Xiph.org Foundation
+
+    Redistribution and use in source and binary forms, with or without
+    modification, are permitted provided that the following conditions
+    are met:
+
+    - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+
+    - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+
+    - Neither the name of the Xiph.org Foundation nor the names of its
+    contributors may be used to endorse or promote products derived from
+    this software without specific prior written permission.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+    `AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+    A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION
+    OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+    SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+    LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+    DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+    THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+    (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+    OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+
+The directory src/bonjour contains a modified version of the Qt Bonjour
+code.
+
+  Copyright (c) 2007, Trenton Schulz
+  Copyright (c) 2009, Stefan Hacker
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions are met:
+
+   1. Redistributions of source code must retain the above copyright notice,
+      this list of conditions and the following disclaimer.
+
+   2. Redistributions in binary form must reproduce the above copyright notice,
+      this list of conditions and the following disclaimer in the documentation
+      and/or other materials provided with the distribution.
+
+   3. The name of the author may not be used to endorse or promote products
+      derived from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR IMPLIED
+  WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
+  EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+
+Part of the code in overlay_macx is based on injector code that is
+  Copyright (c) 2003-2009 Jonathan 'Wolf' Rentzsch: <http://rentzsch.com>
+  Some rights reserved: <http://opensource.org/licenses/mit-license.php>
+
+
+The rest of the source code is licensed as follows:
+
+Upstream Author: Thorvald Natvig <slicer@sourceforge.net>
+
+Copyright: 2005 - 2009, Thorvald Natvig <thorvald@natvig.com>
+           2007, Stefan Gehn <mETz AT gehn DOT net>
+           2007, Sebastian Schlingmann <mit_service@users.sourceforge.net>
+           2008 - 2009, Mikkel Krautz <mikkel@krautz.dk>
+           2008, Andreas Messer <andi@bupfen.de>
+           2007, Trenton Schulz
+           2008-2009, Stefan Hacker <dd0t@users.sourceforge.net>
+
+License:
+
+    All rights reserved.
+    Redistribution and use in source and binary forms, with or without
+    modification, are permitted provided that the following conditions
+    are met:
+
+    - Redistributions of source code must retain the above copyright notice,
+    this list of conditions and the following disclaimer.
+    - Redistributions in binary form must reproduce the above copyright notice,
+    this list of conditions and the following disclaimer in the documentation
+    and/or other materials provided with the distribution.
+    - Neither the name of the Mumble Developers nor the names of its
+    contributors may be used to endorse or promote products derived from this
+    software without specific prior written permission.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+    ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+    A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION OR
+    CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+    EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+    PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+    PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+    LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+    NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+
+The file src/CryptState.cpp implements OCB-AES128 (an authenticated-
+encryption algorithm), which is covered by patents in the US. The patent
+holder has written a patent grant for applications licensed under the GNU
+Public License, but has also granted a license for Mumble:
+
+-------------------------------------------------------------------------
+Date: Wed, 20 Feb 2008 09:33:40 -0800 (Pacific Standard Time)
+From: Phillip Rogaway <rogaway@cs.ucdavis.edu>
+To: Thorvald Natvig <thorvald@natvig.com>
+Subject: Re: OCB under BSD License?
+
+Hi Thorvald,
+
+Nice to hear from you, and to hear that OCB is in Mumble.
+
+I am in fact planning to greatly broaden the patent grant; I just need to
+check with my attorney to see what's the best way to word it. Thanks for the
+excellent suggestion to include "all programs whose complete source code is
+freely available".  I will make sure to include this setting.  I am actually
+looking to go much further.
+
+Anyway, until I get the wording figured out and on the web
+for a very general patent grant, please consider this email from me as
+explicit permission to include OCB in Mumble and distribute it under under
+BSD (as well as GNU GPL) on a royalty-free basis.
+
+Good luck, and thanks for creating your software.
+
+phil
+-------------------------------------------------------------------------
+
+
+
+mumble-server links with ZeroC Ice, which is licensed under the GPL. ZeroC
+has granted a retroactive link exception for Mumble, please see the updated
+ICE_LICENSE found in ZeroC Ice 3.3.1 or newer.
+
+
+The Debian packaging is copyrighted 2007-2009, Patrick Matthäi <patrick.matthaei@web.de>
+and Thorvald Natvig <slicer@users.sourceforge.net> and is licensed under the terms of
+the BSD license.

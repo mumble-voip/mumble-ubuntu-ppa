@@ -1,0 +1,10 @@
+mumble (1.2.0~200910141302-8af721-1) experimental; urgency=low
+
+    The 1.2.0 series uses a new protocol, which makes it incompatible with 1.1.8
+    and earlier version. If you wish to connect to an older server, there is a
+    separate mumble-11x package with a backward compatible client (mumble11x).
+    There is no backward-compatible server, so if you upgrade the server connecting
+    clients must be running 1.2.0 or newer.
+
+ -- Thorvald Natvig <slicer@users.sourceforge.net>  Fri, 02 Oct 2009 15:35:54 +0200
+

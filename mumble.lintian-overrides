@@ -1,0 +1,2 @@
+mumble: hardening-no-stackprotector usr/lib/mumble/liblink.so
+mumble: hardening-no-stackprotector usr/lib/mumble/libmanual.so

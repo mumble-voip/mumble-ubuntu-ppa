@@ -1,0 +1,82 @@
+# ITALIAN TRANSLATION OF MUMBLE'S PO-DEBCONF FILE.
+# COPYRIGHT (C) 2010 THE MUMBLE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the mumble package.
+#
+# Vincenzo Campanella <vinz65@gmail.com>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mumble\n"
+"Report-Msgid-Bugs-To: mumble@packages.debian.org\n"
+"POT-Creation-Date: 2010-01-11 16:52+0100\n"
+"PO-Revision-Date: 2010-10-14 20:09+0200\n"
+"Last-Translator: Vincenzo Campanella <vinz65@gmail.com>\n"
+"Language-Team: Italian <tp@lists.linux.it>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: password
+#. Description
+#: ../mumble-server.templates:1001
+msgid "Password to set on SuperUser account:"
+msgstr "Password dell'account SuperUser:"
+
+#. Type: password
+#. Description
+#: ../mumble-server.templates:1001
+msgid ""
+"Murmur has a special account called \"SuperUser\" which bypasses all "
+"privilege checks."
+msgstr ""
+"Murmur possiede un account speciale, «SuperUser», che evita tutti i "
+"controlli dei permessi."
+
+#. Type: password
+#. Description
+#: ../mumble-server.templates:1001
+msgid ""
+"If you set a password here, the password for the \"SuperUser\" account will "
+"be updated."
+msgstr ""
+"Se s'imposta qui una password, la password dell'account «SuperUser» verrà "
+"aggiornata."
+
+#. Type: password
+#. Description
+#: ../mumble-server.templates:1001
+msgid "If you leave this blank, the password will not be changed."
+msgstr "Se si lascia il campo vuoto, la password non verrà modificata."
+
+#. Type: boolean
+#. Description
+#: ../mumble-server.templates:2001
+msgid "Autostart mumble-server on server boot?"
+msgstr "Eseguire automaticamente mumble-server all'avvio?"
+
+#. Type: boolean
+#. Description
+#: ../mumble-server.templates:2001
+msgid ""
+"Mumble-server (murmurd) can start automatically when the server is booted."
+msgstr ""
+"Mumble-server (murmurd) può essere eseguito automaticamente all'avvio del "
+"server."
+
+#. Type: boolean
+#. Description
+#: ../mumble-server.templates:3001
+msgid "Allow mumble-server to use higher priority?"
+msgstr "Consentire a mumble-server di utilizzare priorità più alta?"
+
+#. Type: boolean
+#. Description
+#: ../mumble-server.templates:3001
+msgid ""
+"Mumble-server (murmurd) can use higher process and network priority to "
+"ensure low latency audio forwarding even on highly loaded servers."
+msgstr ""
+"Mumble-server (murmurd) può utilizzare una priorità di processo e di rete "
+"più alta, al fine di assicurare una bassa latenza dell'audio inoltrato anche "
+"su server molto occupati."

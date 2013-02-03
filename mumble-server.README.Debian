@@ -1,0 +1,9 @@
+This package includes a system-wide installation of murmurd. If you want a
+personal server running on your own user account, use the murmur-user-wrapper
+script.
+
+If you have apache running, you can install the mumble-server-web package to
+get web-accessible scripts.
+
+Murmur's root user is called SuperUser. To set the password for superuser,
+simply dpkg-reconfigure mumble-server.

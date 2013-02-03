@@ -1,0 +1,9 @@
+Document: mumble-server
+Title: Slice API Documentation
+Author: Thorvald Natvig
+Abstract: Information and control of the murmur server
+Section: Sound
+
+Format: HTML
+Index: /usr/share/doc/mumble-server/Ice/index.html
+Files: /usr/share/doc/mumble-server/Ice/Murmur/*.html

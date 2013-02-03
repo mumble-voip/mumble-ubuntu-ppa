@@ -1,0 +1,40 @@
+#! /usr/bin/perl
+#
+# Hook for automatic backports.
+#
+# Target dist: Ubuntu Lucid
+
+use warnings;
+use strict;
+use Carp;
+
+open(F, "debian/control") or croak;
+my $first = 1;
+my $file;
+my $field = '';
+while(<F>) {
+  chomp();
+  if (/^(\S+):/) {
+    $field = $1;
+  }
+  if ($first) {
+    $file .= $_;
+    $first = 0;
+  } elsif (/^$/) {
+    $file .= "\n";
+  } elsif ($field eq 'Description' || /^[^ ]/ || /^$/) {
+    $file .= "\n" . $_;
+  } else {
+    $file .= $_;
+  }
+}
+close(F);
+
+$file .= "\n";
+
+$file =~ s/(\nBuild-Depends: [^\n]+)exim4/\1postfix/g;
+$file =~ s/(\nDepends: [^\n]+)exim4/\1postfix/g;
+
+open(F, ">debian/control") or croak;
+print F $file;
+close(F);

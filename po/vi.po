@@ -1,0 +1,82 @@
+# Vietnamese translation for Mumble.
+# Copyright © 2010 Free Software Foundation, Inc.
+# Clytie Siddall <clytie@riverland.net.au>, 2008-2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mumble 1.2.1-3\n"
+"Report-Msgid-Bugs-To: mumble@packages.debian.org\n"
+"POT-Creation-Date: 2010-01-11 16:52+0100\n"
+"PO-Revision-Date: 2010-02-11 18:40+0930\n"
+"Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
+"Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: LocFactoryEditor 1.8\n"
+
+#. Type: password
+#. Description
+#: ../mumble-server.templates:1001
+msgid "Password to set on SuperUser account:"
+msgstr "Mật khẩu cần đặt vào tài khoản Siêu Người Dùng:"
+
+#. Type: password
+#. Description
+#: ../mumble-server.templates:1001
+msgid ""
+"Murmur has a special account called \"SuperUser\" which bypasses all "
+"privilege checks."
+msgstr ""
+"Murmur có một tài khoản đặc biệt được gọi là « SuperUser « (siêu người dùng) "
+"mà đi qua mọi việc kiểm tra quyền truy cập."
+
+#. Type: password
+#. Description
+#: ../mumble-server.templates:1001
+msgid ""
+"If you set a password here, the password for the \"SuperUser\" account will "
+"be updated."
+msgstr ""
+"Đặt mật khẩu ở đây thì mật khẩu của tài khoản « SuperUser » cũng được cập "
+"nhật."
+
+#. Type: password
+#. Description
+#: ../mumble-server.templates:1001
+msgid "If you leave this blank, the password will not be changed."
+msgstr "Bỏ trống trường này thì mật khẩu không thay đổi."
+
+#. Type: boolean
+#. Description
+#: ../mumble-server.templates:2001
+msgid "Autostart mumble-server on server boot?"
+msgstr "Tự động khởi chạy trình phục vụ Mumble vào lúc khởi động máy phục vụ ?"
+
+#. Type: boolean
+#. Description
+#: ../mumble-server.templates:2001
+msgid ""
+"Mumble-server (murmurd) can start automatically when the server is booted."
+msgstr ""
+"Trình phục vụ Mumble (murmurd) có khả năng tự động khởi chạy khi máy phục vụ "
+"khởi động."
+
+#. Type: boolean
+#. Description
+#: ../mumble-server.templates:3001
+msgid "Allow mumble-server to use higher priority?"
+msgstr "Cho phép trình phục vụ Mumble đặt mức ưu tiên cao hơn ?"
+
+#. Type: boolean
+#. Description
+#: ../mumble-server.templates:3001
+msgid ""
+"Mumble-server (murmurd) can use higher process and network priority to "
+"ensure low latency audio forwarding even on highly loaded servers."
+msgstr ""
+"Trình phục vụ Mumble (murmurd) có khả năng sử dụng mức ưu tiên cao hơn chạy "
+"tiến trình và mạng nhằm đảm bảo rằng âm thanh chuyển tiếp hơi nhanh, ngay cả "
+"trên máy phục vụ rất bận."

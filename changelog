@@ -1,0 +1,859 @@
+mumble (1.2.3-349-g315b5f5-2ubuntu2) quantal; urgency=low
+
+  * Make the package compatible with the rest of the world, yet again,
+    by re-enabling CELT 0.7.1 support which was dropped in 1.2.3-349-g315b5f5-1.
+    (TC Closes: #682010)
+  * Refresh patches.
+  
+ -- Dmitrijs Ledkovs <dmitrij.ledkov@ubuntu.com>  Sat, 25 Aug 2012 00:32:11 +0100
+
+mumble (1.2.3-349-g315b5f5-2ubuntu1) quantal; urgency=low
+
+  * Merge from Debian, remaining changes: 
+  - add libqt4-opengl-dev (>= 4.5.0) Build-Dependencies, as it is not
+    pulled in by default on arm.
+  
+ -- Dmitrijs Ledkovs <dmitrij.ledkov@ubuntu.com>  Fri, 24 Aug 2012 18:33:55 +0100
+
+mumble (1.2.3-349-g315b5f5-2) unstable; urgency=low
+
+  * Drop the hard dep on boost-1.46, that's been removed now.  Closes: #678759
+    Drop the | dep on alternative boost, since that's what got this package
+    overlooked when people were removing boost-1.46.
+
+  * Drop the | dep on libgl-dev, that's been gone a long time now too and
+    leaves us vulnerable to a similar problem.
+
+  * Drop the mumble-server-web package altogether.  Upstream reports that it
+    is unmaintained and "pretty useless anyway", which seems to be well backed
+    up by the fact that a call to Ice_intversion() was added in March 2010,
+    and that function has never existed in any version of zeroc-ice ever.
+    A function named Ice_intVersion was added to -ice 3.2.1 though ...
+    Since it's taken this long for anyone to notice, we can be pretty sure that
+    there aren't any actual users of it.  Closes: #676815, #676816
+
+  * Build-Depend on the unfycked version of zeroc-ice, so the ABI broken one
+    doesn't accidentally get used by an out of date buildd.  Closes: #675955
+    Force building with gcc-4.6, since that's required for zeroc-ice deps now,
+    until they get their act together and write some actually legal code.
+
+  * Cherry-pick the upstream patches to fix the "audio glitches", and provide
+    codec thresholds and warnings.  Closes: #675971 since it fixes the only
+    actual bug reported there.
+
+  * Drop the watch file, since this has been building snapshots from git now
+    since 1.2.3-3 (and before).
+
+ -- Ron Lee <ron@debian.org>  Sun, 08 Jul 2012 06:18:50 +0930
+
+mumble (1.2.3-349-g315b5f5-1) unstable; urgency=low
+
+  * Adopt the package.  Closes: #674719
+  * Drop the dependency on the celt package.  Closes: #674650
+  * Add the upstream patch to enable opus support.
+  * Explicitly disable the bundled libs, don't rely on system lib detection
+    doing that as a side-effect.
+
+ -- Ron Lee <ron@debian.org>  Mon, 04 Jun 2012 03:56:35 +0930
+
+mumble (1.2.3-348-g317f5a0-1) unstable; urgency=low
+
+  * New upstream snapshot from 20.05.2012.
+  * Build with now available libpulse on hurd-i386.
+  * Overwrite false positive hardening-no-stackprotector lintian warnings.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Thu, 24 May 2012 20:32:56 +0200
+
+mumble (1.2.3-313-ge5c4657-1) unstable; urgency=high
+
+  * New upstream snapshot from 21.03.2012.
+  * Remove /usr/lib32 building.
+    Closes: #667882
+  * Remove comments from debian/rules.
+  * Move slice2html call from build-indep-stamp to build-arch-stamp. The build
+    documentation is required in an arch:any package.
+    Closes: #667883
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Sun, 08 Apr 2012 12:31:42 +0200
+
+mumble (1.2.3-309-g7176ff4-1) unstable; urgency=low
+
+  * New upstream snapshot from 16.03.2012.
+  * Uploading to unstable.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Fri, 16 Mar 2012 16:07:56 +0100
+
+mumble (1.2.3-304-g88e9e6a-1) experimental; urgency=low
+
+  * New upstream snapshot from 26.02.2012.
+    - Drop patch 01-fix-spelling-error, merged upstream.
+    - Drop patch 03-fix-cert-validation, merged upstream.
+  * Merge changelog from 1.2.2-6+squeeze1 and 1.2.3-3.
+  * Bump Standards-Version to 3.9.3 (no changes needed).
+  * Correct Vcs-Browser control field.
+  * Wrap all debian/control fields.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Sun, 26 Feb 2012 14:24:32 +0100
+
+mumble (1.2.3-277-g98f4ac1-1) experimental; urgency=low
+
+  * New upstream snapshot from 12.02.2012.
+    - Refresh patch 01-fix-spelling-error.
+    - Word readable file permissions on mumble database are fixed in this
+      snapshot.
+      Closes: #659039
+  * Add Dutch debconf translation.
+    Closes: #657632
+  * Add patch 02-reject-with-ip-in-log to show up the IP address of a rejected
+    connection in the mumble-server log.
+    Closes: #627139
+  * Add patch 03-fix-cert-validation from Marc Deslauriers, which fixes the
+    certificate validation with Qt 4.8.
+    Closes: #659035
+  * Add patch 05-lsb-description which fixes the lintian warning
+    init.d-script-missing-lsb-description.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Sun, 12 Feb 2012 16:43:52 +0100
+
+mumble (1.2.3-192-g683d39b-1) experimental; urgency=low
+
+  [ Thorvald Natvig ]
+  * Allow build with boost 1.38 to make backports a bit easier.
+  * Reduce build verbosity a bit.
+  * Support parallel builds.
+
+  [ Patrick Matthäi ]
+  * New upstream snapshot from 06.10.2011.
+    - Audio statistics do not need glx extension anymore.
+      Closes: #612030
+  * Qt and mumble should use the same OpenSSL version now.
+    Closes: #627871
+  * Bump debhelper to compat version 7.
+    - Replace dh_clean -k with dh_prep.
+  * Bump Standards-Version to 3.9.2 (no changes needed).
+  * Build with enabled hardening-wrapper.
+  * Wrap debian/control fields.
+  * Add patch 01-fix-spelling-error.diff to fix an minor spelling error in
+    the source code.
+  * Clean up debian/rules a bit.
+  * libGL-dev libs already have been added as build dependencies.
+    Closes: #627430
+  * Use linux-any instead of hardcoded list for libcap-dev build dependency.
+    Closes: #634777
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Thu, 06 Oct 2011 12:52:02 +0200
+
+mumble (1.2.3-91-g05d91c1-1) experimental; urgency=low
+
+  * Experimental upstream release.
+  * Remove 11x package, as source no longer contains it.
+
+ -- Thorvald Natvig <thorvald@debian.org>  Fri, 15 Apr 2011 06:35:05 +0200
+
+mumble (1.2.3-3) unstable; urgency=high
+
+  * Add Dutch debconf translation.
+    Closes: #657632
+  * Add patch 01-fix-spelling-error.diff to fix an minor spelling error in
+    the source code.
+  * Add patch 05-lsb-description which fixes the lintian warning
+    init.d-script-missing-lsb-description.
+  * Add patch 02-reject-with-ip-in-log to show up the IP address of a rejected
+    connection in the mumble-server log.
+    Closes: #627139
+  * Add patch 04-set-file-permissions from Marc Deslauriers, which fixes the
+    file permissions of the Mumble database.
+    Closes: #659039
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Sun, 12 Feb 2012 17:09:07 +0100
+
+mumble (1.2.3-2ubuntu4) precise; urgency=low
+
+  * New patch, 0005-french-translation-porole, fix typo "porole" instead of
+    "parole" in French translation (src/mumble/mumble_fr.ts); fixed upstream
+    in SF #3439985.
+
+ -- Loïc Minier <loic.minier@ubuntu.com>  Tue, 28 Feb 2012 18:52:04 +0100
+
+mumble (1.2.3-2ubuntu3) precise; urgency=low
+
+  * debian/patches/0003-fix-cert-validation.patch: Fix certificate
+    validation with QT 4.8. For some reason, the new on-demand root cert
+    loading is not working with mumble. (LP: #928296)
+  * debian/patches/0004-set-file-permissions.patch: Set restrictive
+    permissions on data files. (LP: #783405)
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Tue, 07 Feb 2012 09:53:44 -0500
+
+mumble (1.2.3-2ubuntu2) oneiric; urgency=low
+
+  * No change rebuild for protobuf transition
+
+ -- Bhavani Shankar <bhavi@ubuntu.com>  Sat, 11 Jun 2011 00:16:21 +0530
+
+mumble (1.2.3-2ubuntu1) oneiric; urgency=low
+
+  * Re-add accidentally dropped change:
+
+  [ Jani Monoses ]
+  * debian/control: Explicit b-d on GL development libs, which on armel
+    are not pulled in via Qt.
+
+ -- Felix Geyer <debfx-pkg@fobos.de>  Fri, 20 May 2011 09:16:28 +0200
+
+mumble (1.2.3-2) unstable; urgency=low
+
+  * Prefer libboost1.46-dev to libboost-dev.
+    Closes: #618092
+  * Add patch from Conor Curran to fix PulseAudio role.
+    Closes: #615994
+  * Add patch from Benjamin Jemlich to remove OpenGL for AudioStats dialog.
+
+ -- Thorvald Natvig <thorvald@debian.org>  Fri, 25 Mar 2011 07:45:13 +0100
+
+mumble (1.2.3-1) unstable; urgency=low
+
+  [ Patrick Matthäi ]
+  * Do not build with non existant libpulse-dev on hurd-i386.
+
+  [ Thorvald Natvig ]
+  * New upstream release.
+
+ -- Thorvald Natvig <thorvald@debian.org>  Sat, 19 Feb 2011 22:58:58 +0100
+
+mumble (1.2.3~rc3-2) unstable; urgency=low
+
+  * Add Ice 3.4 as valid option.
+
+ -- Thorvald Natvig <thorvald@debian.org>  Mon, 14 Feb 2011 04:17:23 +0100
+
+mumble (1.2.3~rc3-1) unstable; urgency=low
+
+  [ Thorvald Natvig ]
+  * New upstream release.
+  * Add dependency on Ice slice files when building.
+  * Add fix from Felix Geyer to work around non-existant mumble-server.ini
+    on upgrades.
+    Closes: #610608
+
+  [ Patrick Matthäi ]
+  * Merge 1.1.4-4+lenny2 and 1.2.2-6 changelog.
+
+ -- Thorvald Natvig <thorvald@debian.org>  Mon, 14 Feb 2011 03:36:18 +0100
+
+mumble (1.2.2-6+squeeze1) stable-security; urgency=high
+
+  * Add patch 0005-set-file-permissions from Marc Deslauriers, which fixes the
+    word readable file permissions of the Mumble SQLite database, as described
+    in CVE-2012-0863.
+    Closes: #659039
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Fri, 17 Feb 2012 14:13:34 +0100
+
+mumble (1.2.2-6) unstable; urgency=high
+
+  * Delete /var/lib/mumble-server on purge.
+  * Do not make /etc/mumble-server.ini world readable.
+    Closes: #609919
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Thu, 13 Jan 2011 21:29:40 +0100
+
+mumble (1.2.2-5) unstable; urgency=low
+
+  * Update fuzzy spanish debconf translation. Thanks to Omar Campagne Polaino.
+    Closes: #590442
+  * Downgrade mumble-11x from recommends to suggests.
+    Closes: #599661
+  * Update Basque translation from Dooteo.
+    Closes: #600203
+  * Add Norwegian translation from Bjørn Steensrud.
+    Closes: #600277
+  * Add Italian translation from Vincenzo Campanella.
+    Closes: #600440
+  * Bump Standards-Version to 3.9.1 (no changes needed).
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Sun, 17 Oct 2010 14:41:34 +0200
+
+mumble (1.2.2-4) unstable; urgency=high
+
+  * Fix failure with SQLite with very long 'like' matches.
+    Closes: #587713
+
+ -- Thorvald Natvig <thorvald@debian.org>  Mon, 12 Jul 2010 15:11:24 +0200
+
+mumble (1.2.2-3) unstable; urgency=high
+
+  * Remove trailing slash from the mumble-server-web alias.
+  * Fix README.Debian from mumble-server-web.
+  * Add ExecCGI and a cgi-script handler to the mumble-server-web config.
+    Without it, the weblist.cgi code is not executed and directly shown to the
+    client. Raising urgency to medium.
+  * Include every mumble plugin from release/plugins.
+  * Add danish translation from Joe Dalton.
+    Closes: #587798
+  * Bump Standards-Version to 3.9.0 (no changes needed).
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Thu, 08 Jul 2010 18:06:23 +0200
+
+mumble (1.2.2-2) unstable; urgency=low
+
+  [ Thorvald Natvig ]
+  * Add patch to compile on kfreebsd
+  * Remove path to Router.ice as the path is not stable.
+    Closes: #573699
+  * Remove README.source ("we use quilt"), as patches are included in
+    format 3.0 (quilt).
+
+  [ Patrick Matthäi ]
+  * Update vietnamese translation from Clytie Siddall.
+    Closes: #569281
+  * Do not build depend on quilt.
+  * Add 0002-spelling-error.patch, which fixes a spelling error.
+  * Add missing blank line to debian/NEWS.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Sat, 13 Mar 2010 11:47:09 +0100
+
+mumble (1.2.2-1) unstable; urgency=low
+
+  * New upstream release.
+  * Remove DM-Upload-Allowed, all uploaders are now DD. (Yay!)
+  * Fix my email address in Uploaders:
+  * Move mumble-server's Recommends: of mumble-server-web to Suggests: and
+    remove the Suggests: of mumble.
+  * Remove cgi config in mumble-server-web.conf as we no longer ship cgi
+    files.
+
+ -- Thorvald Natvig <thorvald@debian.org>  Tue, 09 Feb 2010 17:55:13 +0100
+
+mumble (1.2.2~201002071401-4ab478-1) experimental; urgency=low
+
+  [ Patrick Matthäi ]
+  * Bump Standards-Version to 3.8.4 (no changes needed).
+
+  [ Debian l10n ]
+  * Updated french translation from Steve Petruzzello.
+    Closes: #567913
+
+  [ Launchpad Translation ]
+  * Hungarian translation from SPeck.
+
+  [ Thorvald Natvig ]
+  * Updated po files.
+  * New upstream release.
+
+ -- Thorvald Natvig <thorvald@debian.org>  Sun, 07 Feb 2010 15:02:19 +0100
+
+mumble (1.2.1-3) unstable; urgency=low
+
+  [ Thorvald Natvig ]
+  * Remove 'ulimit -r' support from defaults and initscript; it's bash-only.
+  * Remove debconf for emailfrom, it's been deprecated in the 1.2.x series.
+  * Add debconf for use_capabilities; it is needed on servers with load.
+  * Add support for upcoming libcelt0-0.
+
+  [ Patrick Matthäi ]
+  * Change my odd email address in po/de.po.
+  * Build depend on libcap-dev instead of libcap2-dev.
+
+  [ Debian l10n ]
+  * Updated swedish translation from Martin Bagge.
+    Closes: #564780
+  * Updated finnish translation from Esko Arajärvi.
+    Closes: #564744
+  * Updated russian translation from Yuri Kozlov.
+    Closes: #564737
+  * Updated german translation from Thomas Mueller.
+    Closes: #564932
+  * Updated Japanese translation from Masayuki Hamasaki.
+  * Updated portuguese translation from Américo Monteiro.
+    Closes: #565612
+  * Updated czech translation from Miroslav Kure.
+    Closes: #565880
+
+ -- Thorvald Natvig <slicer@users.sourceforge.net>  Tue, 19 Jan 2010 19:10:04 +0100
+
+mumble (1.2.1-2) unstable; urgency=low
+
+  * Fix upgrade failure when upgrading mumble-server directly from 1.1.x
+    to 1.2.1
+
+ -- Thorvald Natvig <slicer@users.sourceforge.net>  Sat, 09 Jan 2010 19:28:50 +0100
+
+mumble (1.2.1-1) unstable; urgency=low
+
+  * New upstream release.
+    * Now detects ipv6only properly.
+      Closes: #563365
+
+ -- Thorvald Natvig <slicer@users.sourceforge.net>  Thu, 07 Jan 2010 23:57:54 +0100
+
+mumble (1.2.0-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Thorvald Natvig <slicer@users.sourceforge.net>  Thu, 10 Dec 2009 20:29:29 +0100
+
+mumble (1.2.0~beta2-1) unstable; urgency=low
+
+  [ Thorvald Natvig ]
+  * New upstream release.
+  * Add celt dependency to binary package; celt is dynamically loaded,
+    so isn't picked up by dh_shlibdeps.
+  * Add patch to include all directly used libraries.
+    Closes: #555758
+  * Update mumble-server.postinst to ignore dbus restart errors.
+    (Thanks, Leo!)
+
+  [ Patrick Matthäi ]
+  * Convert package to the 3.0 (quilt) format.
+  * Rebuild against the new protobuf version.
+    Closes: #556561
+
+ -- Thorvald Natvig <slicer@users.sourceforge.net>  Tue, 01 Dec 2009 22:23:56 +0100
+
+mumble (1.2.0~beta1-1) unstable; urgency=low
+
+  [ Patrick Matthäi ]
+  * Do not build with missing libcap2-dev on kfreebsd-*.
+  * Merge 1.1.8-3 and 1.1.8-4 changelog.
+  * Merge remaining changes from the 1.1.8 branch.
+  * Also install the menu icon for the mumble-11x package.
+  * Extend the long description of the mumble-11x package. Thanks lintian.
+
+  [ Thorvald Natvig ]
+  * New upstream beta release.
+  * Update get-orig-source.
+  * Update dependencies.
+  * Let the qmake script find the celt/speex libraries on its own.
+
+ -- Thorvald Natvig <slicer@users.sourceforge.net>  Wed, 11 Nov 2009 23:33:38 +0100
+
+mumble (1.2.0~200910141302-8af721-1) experimental; urgency=low
+
+  [ Thorvald Natvig ]
+  * New upstream release.
+  * Add a NEWS; this version is incompatible with 1.1.8.
+  * Use bundled CELT version for now.
+
+  [ Patrick Matthäi ]
+  * Suggest mumble-django at the mumble-server package.
+
+ -- Thorvald Natvig <slicer@users.sourceforge.net>  Wed, 14 Oct 2009 16:27:29 +0200
+
+mumble (1.2.0~200909111826-402695-1) experimental; urgency=low
+
+  [ Patrick Matthäi ]
+  * Drop quilt, we do not have any patches applied.
+  * Bump Standards-Version to 3.8.3 (no changes needed).
+
+  [ Michael Ziegler ]
+  * Change Alias for mumble-server-web from /mumble/ to /mumble-server/.
+
+  [ Thorvald Natvig ]
+  * New upstream tarball.
+  * Update section in menu entries.
+  * Install new, upstream .svg icon and remove deprecated .pngs.
+  * Update mumble-server postrm and postinst to remove /var/lib/mumble-server
+    even if deluser isn't found. Fixes piuparts uninstall failure.
+  * Multiline depends, build-depends.
+  * Update PHP settings to depend on ice33-slice and include the Glacier2
+    slice files.
+
+ -- Thorvald Natvig <slicer@users.sourceforge.net>  Fri, 11 Sep 2009 20:27:03 +0200
+
+mumble (1.2.0~200908081144-c7cffd-1) experimental; urgency=low
+
+  [ Thorvald Natvig ]
+  * Remove dh_desktop
+  * Upstream fixes for positional audio in server.
+  * Update various dependencies.
+  * Update mumble-server-web to not include deprecated web registration.
+  * New mumble-11x package with the compatibility client.
+
+  [ Patrick Matthäi ]
+  * New upstream git snapshot of the upcoming 1.2.0 release.
+  * Merge 1.1.8-2~bpo50+1 changelog.
+  * Replace my old email address in debian/copyright.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Sat, 08 Aug 2009 10:32:11 +0200
+
+mumble (1.2.0~200907301646-b5b94c-1) experimental; urgency=low
+
+  [ Patrick Matthäi ]
+  * Merge 1.1.8-1~bpo50+1 changelog.
+  * Bump Standards-Version to 3.8.2 (no changes needed).
+
+  [ Thorvald Natvig ]
+  * Update for upcoming release 1.2.0
+
+ -- Thorvald Natvig <slicer@users.sourceforge.net>  Thu, 30 Jul 2009 17:23:30 +0200
+
+mumble (1.1.8-4) unstable; urgency=low
+
+  * Do not build with missing libcap2-dev on kfreebsd-*.
+  * Add debian/README.source.
+  * Add mumble-server doc-base.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Sun, 01 Nov 2009 14:13:56 +0100
+
+mumble (1.1.8-3) unstable; urgency=low
+
+  * Backport ALSA and PulseAudio modules from 1.2.0 git, makes them work with
+    modern releases of these sound systems.
+  * Standards-version 3.8.3
+  * Remove dh_desktop
+
+ -- Thorvald Natvig <slicer@users.sourceforge.net>  Sun, 16 Aug 2009 17:52:43 +0200
+
+mumble (1.1.8-2~bpo50+1) lenny-backports; urgency=low
+
+  * Rebuild for lenny-backports.
+    - Adjust build dependencies: We need the libzeroc-ice32 packages to avoid
+      a FTBFS.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Tue, 04 Aug 2009 18:29:39 +0200
+
+mumble (1.1.8-2) unstable; urgency=low
+
+  [ Thorvald Natvig ]
+  * Add --oknodo to logrotate script. (Closes: #520639)
+
+  [ Patrick Matthäi ]
+  * Change my email address.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Wed, 22 Apr 2009 15:02:08 +0200
+
+mumble (1.1.8-1~bpo50+1) lenny-backports; urgency=low
+
+  * Rebuild for lenny-backports.
+
+ -- Patrick Matthäi <patrick.matthaei@web.de>  Mon,  6 Apr 2009 18:35:50 +0200
+
+mumble (1.1.8-1) unstable; urgency=low
+
+  [ Patrick Matthäi ]
+  * Fix override disparity. Set section of mumble-dbg to devel.
+  * Drop all patches (merged upstream).
+  * Bump Standards-Version to 3.8.1 (no changes needed).
+
+  [ Thorvald Natvig ]
+  * New upstream release.
+  * New overlay library doesn't use private ELF symbols anymore.
+  * Update defaults file to match new init-script options.
+  * Move mumble-dbg to section debug.
+
+ -- Patrick Matthäi <patrick.matthaei@web.de>  Sun, 22 Mar 2009 16:21:58 +0100
+
+mumble (1.1.7-3) unstable; urgency=low
+
+  [ Patrick Matthäi ]
+  * Fix basque translation: Do not translate the username.
+    Closes: #515031
+
+  [ Thorvald Natvig ]
+  * Run qmake recursively, to be forward compatible with qmake from Qt 4.5.0.
+
+ -- Patrick Matthäi <patrick.matthaei@web.de>  Wed, 18 Feb 2009 18:12:09 +0200
+
+mumble (1.1.7-2) unstable; urgency=low
+
+  [ Thorvald Natvig ]
+  * Add workaround for threading bug in ALSA.
+  * Add 32-bit overlay library on amd64.
+  * Add documentation for the Ice interface to mumble-server.
+
+ -- Patrick Matthäi <patrick.matthaei@web.de>  Wed, 18 Feb 2009 17:56:28 +0200
+
+mumble (1.1.7-1) unstable; urgency=low
+
+  [ Patrick Matthäi ]
+  * Add a mumble-dbg package, which contains the debugging symbols of mumble
+    and mumble-server.
+  * Move swedish translation debian/sv.po to debian/po/sv.po.
+    This was a bad error of mine.
+  * Remove debian/patches and dpatch, everything has been merged by upstream.
+
+  [ Thorvald Natvig ]
+  * New upstream release.
+    Closes: #513119
+  * Added Spanish translation from Álvaro M. Recio
+  * Synchronized copyright
+
+ -- Patrick Matthäi <patrick.matthaei@web.de>  Wed,  4 Feb 2009 10:32:16 +0200
+
+mumble (1.1.6-5) unstable; urgency=low
+
+  * Correct old webscript URL paths in mumble-server-web.README.Debian.
+  * Fix copyright-with-old-dh-make-debian-copyright.
+    Thanks lintian.
+  * Pass -xglibc-private to dpkg-shlibdeps. This avoids an unsatisfied
+    dependency on glibc-private with glibc >= 2.8, because mumble uses private
+    symbols of glibc for the overlay feature.
+
+ -- Patrick Matthäi <patrick.matthaei@web.de>  Thu,  8 Jan 2009 19:45:09 +0200
+
+mumble (1.1.6-4) unstable; urgency=low
+
+  [ Patrick Matthäi ]
+  * Do not use the "X$FOO" != "X" notation in mumble-server.{postinst,config}.
+    This notation is just in the unquoted version needed.
+  * Merged changelog from the 1.1.4-4+lenny1 release.
+  * Add missing ${misc:Depends}. Thanks lintian.
+
+  [ Debian l10n ]
+  * Swedish translation from Martin Bagge <brother@bsnet.se>.
+    Closes: #506594
+
+ -- Patrick Matthäi <patrick.matthaei@web.de>  Sat, 13 Dec 2008 12:59:18 +0200
+
+mumble (1.1.6-3) unstable; urgency=low
+
+  * Added 01-ftbfs_arm_qreal.dpatch. This patch fixes a FTBFS on arm{el} where
+    qreal is not double.
+    - Include dpatch.
+  * Added needed ice33-translators | ice32-translators | ice-translators
+    dependencies to mumble-server-web.
+
+ -- Patrick Matthäi <patrick.matthaei@web.de>  Fri,  3 Oct 2008 18:45:33 +0200
+
+mumble (1.1.6-2) unstable; urgency=low
+
+  * Added DEFINES+=HAVE_LIMITS_H DEFINES+=HAVE_ENDIAN_H to debian/rules. Now
+    it should build on s390 and ia64.
+
+ -- Patrick Matthäi <patrick.matthaei@web.de>  Fri, 19 Sep 2008 21:35:35 +0200
+
+mumble (1.1.6-1) unstable; urgency=low
+
+  [ Thorvald Natvig ]
+  * New upstream release.
+    - Includes various minor bugfixes.
+
+ -- Patrick Matthäi <patrick.matthaei@web.de>  Sat, 13 Sep 2008 13:06:36 +0200
+
+mumble (1.1.5-1) unstable; urgency=low
+
+  [ Thorvald Natvig ]
+  * New upstream release.
+  * Added ZeroC ICE dependencies.
+  * mumble-server-web now includes PHP setup, which necessitates setting
+    the global ice.slice PHP variable. This will have to persist until
+    the zeroc-ice-php package adds support for profiles.
+  * Japanese translation from
+    Masayuki Hamasaki <ikasamah@users.sourceforge.net>.
+  * Create a apache config file and put the web files under
+    /usr/share/mumble-server-web
+  * Remove the restart of hald, as we no longer use it.
+  * Default to starting mumble-server.
+
+  [ Patrick Matthäi ]
+  * Do not install var/www/mumble-server/index.php with executable rights.
+    Thanks lintian.
+  * Changed preferred postfix depend to exim4 at the mumble-server-web package.
+    Closes: #495852
+
+ -- Patrick Matthäi <patrick.matthaei@web.de>  Sat,  6 Sep 2008 15:27:57 +0200
+
+mumble (1.1.4-4+lenny2) stable-proposed-updates; urgency=high
+
+  * Change my email address from the deprecated web.de to the debian.de one.
+  * Delete /var/lib/mumble-server on purge.
+  * Do not make /etc/mumble-server.ini world readable.
+    Closes: #609919
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Sun, 16 Jan 2011 19:30:19 +0100
+
+mumble (1.1.4-4+lenny1) testing-proposed-updates; urgency=low
+
+  * Add missing dependency on hal to the mumble package and failover to "true"
+    if invoke-rc.d should fail.
+    Closes: #502748
+
+ -- Patrick Matthäi <patrick.matthaei@web.de>  Sun, 19 Oct 2008 17:15:56 +0200
+
+mumble (1.1.4-4) unstable; urgency=low
+
+  [ Thorvald Natvig ]
+  * Add README and README.Linux to mumble.docs
+  * Revert to asking for server password, as you currently can't change
+    the password once it's set.
+
+ -- Patrick Matthäi <patrick.matthaei@web.de>  Fri, 15 Aug 2008 14:53:19 +0200
+
+mumble (1.1.4-3) unstable; urgency=low
+
+  [ Thorvald Natvig ]
+  * Fix ownership of /var/run/mumble-server so the pid file can be written.
+
+  [ Patrick Matthäi ]
+  * Add my forgotten signature in the 1.1.4-1 changelog, it was confusing.
+  * Only ask for the serverpassword if no previous one has been set.
+  * Set priority of the mumble-server/password question to medium instead of
+    high.
+  * Ordered the parameters of install in debian/rules, it looks now more
+    clean.
+
+ -- Patrick Matthäi <patrick.matthaei@web.de>  Tue, 22 Jul 2008 21:51:43 +0200
+
+mumble (1.1.4-2) unstable; urgency=medium
+
+  [ Patrick Matthäi ]
+  * Added missing Language-Team field in the german debconf translation.
+  * Replaced initial template values in french debconf translation.
+  * Replaced inline perl in mumble-server.config with shell scripting.
+  * Removed libcgi-perl depend at mumble-server-web, it is not needed.
+    Closes: #485010
+  * Bumped Standards-Version to 3.8.0 (no changes needed).
+
+  [ Thorvald Natvig ]
+  * Add mumble-server-web.README.Debian and move the information on the
+    web scripts there.
+
+ -- Patrick Matthäi <patrick.matthaei@web.de>  Mon, 19 May 2008 17:38:05 +0100
+
+mumble (1.1.4-1) unstable; urgency=low
+
+  [ Patrick Matthäi ]
+  * New upstream release.
+    - Removed dpatch and all patches. They are merged in upstream.
+    - Define the Plugin Path and added liblink plugin for mumble.
+    - Renamed murmur-wrapper to murmur-user-wrapper and use murmur.ini now as
+      example file.
+    - Use the new -readsupw option instead of -supw for mumble-server.
+    - Adjusted debian/copyright.
+  * Changed destination of /etc/mumble-server/mumble-server.ini to
+    /etc/mumble-server.ini. So on it is in sync now with the Ubuntu packaging
+    and we can use mumble-server.{init,logrotate} from the upstream source.
+  * Moved mumble-server from Recommends to Suggests at the mumble package.
+  * Added libspeechd-dev build depend and speech-dispatcher recommend.
+  * Added libqt4-opengl-dev build dependency.
+  * Removed suggesting of festival.
+  * The packaging itself is now BSD licensed.
+  * Removed debconf depend. It will be added with ${misc:Depends}.
+  * Handle /etc/mumble-server.ini and /etc/dbus-1/system.d/mumble-server.conf
+    about conffile instead of ucf.
+  * Changed priority of mumble-server/password from medium to high. It is
+    highly recommend to set a password for the SuperUser account.
+
+  [ Debian l10n ]
+  * Czech translation from Miroslav Kure <kurem@debian.cz>.
+    Closes: #480302
+  * Russian translation from Yuri Kozlov <kozlov.y@gmail.com>.
+    Closes: #480623
+
+  [ Thorvald Natvig ]
+  * Add libqt4-sql-sqlite dependency for mumble-server.
+  * Rename murmur-wrapper to murmur-user-wrapper in README.Debian
+  * Adjusted '-readsupw'.
+  * Don't manually remove files under /etc in postrm as that's handled by
+    conffiles.
+  * Add myself as Co-Maintainer.
+  * Remove all unneeded dependencies from Build-Depends.
+
+ -- Patrick Matthäi <patrick.matthaei@web.de>  Tue, 13 May 2008 10:32:13 +0100
+
+mumble (1.1.4-0ubuntu1~slicer) hardy; urgency=low
+
+  * New upstream version.
+  * murmur-wrapper renamed to murmur-user-wrapper.
+  * Build-Depends and Recommends for Speech Dispatcher added, festival
+    removed.
+  * Link plugin added for positional audio.
+  * Audio-system detection is handled at runtime, so no need to suggest
+    PulseAudio/ALSA anymore.
+  * Synced translations from debian's pkg-voip team.
+
+ -- Thorvald Natvig <slicer@users.sourceforge.net>  Fri, 09 May 2008 01:30:00 +0200
+
+mumble (1.1.3-4) unstable; urgency=low
+
+  [ Patrick Matthäi ]
+  * Added DM-Upload-Allowed control field.
+  * Added build depend libglu1-mesa-dev.
+  * Clean up on purge /var/lib/mumble-server/.config complete.
+  * Removed the sed hack from debian/rules. It is fixed in qmake now.
+  * Removed some whitespaces at EOL and newlines at EOF.
+  * Some clean target fixes.
+
+  [ Debian l10n ]
+  * French translation from Steve Petruzzello <dlist@bluewin.ch>.
+    Closes: #477777
+  * Galician translation from Jacobo Tarrio <jtarrio@debian.org>.
+    Closes: #478061
+  * Finnish translation from Esko Arajärvi <edu@iki.fi>.
+    Closes: #478182
+  * Vietnamese translation from Clytie Siddall <clytie@riverland.net.au>.
+    Closes: #478222
+  * Euskara translation from Piarres Beobide <pi@beobide.net>.
+    Closes: #478678
+
+ -- Patrick Matthäi <patrick.matthaei@web.de>  Mon,  5 May 2008 09:40:02 +0100
+
+mumble (1.1.3-3) unstable; urgency=low
+
+  * Call do_configuration() in mumble-server.postinst after the function has
+    been declared. Shame on me, I did not test it with bash and dash.
+    Thanks for reporting Jan Hauke Rahm.
+    Closes: #476554
+  * Added portuguese debconf translation. Thanks to Américo Monteiro.
+    Closes: #476472
+  * Delete the mumble-server group and system account only, if it is available
+    on the system on purge time.
+  * Remove on purge time also /etc/dbus-1/system.d/murmur.conf and
+    /etc/mumble-server/mumble-server.ini if they exist.
+
+ -- Patrick Matthäi <patrick.matthaei@web.de>  Fri, 18 Apr 2008 18:00:00 +0100
+
+mumble (1.1.3-2) unstable; urgency=low
+
+  * Added dirty workaround which removes some extra slashes generated from the
+    newest Qt4.4-rc1 framework.
+    Closes: #476307
+  * Added missing depend on libqt4-sql-sqlite for mumble. It will not be added
+    through ${shlibs:Depends} since Qt4.4-rc1.
+    Closes: #476308
+  * Added missing build-depends.
+
+ -- Patrick Matthäi <patrick.matthaei@web.de>  Tue, 16 Apr 2008 18:31:07 +0100
+
+mumble (1.1.3-0ubuntu2) hardy; urgency=low
+
+  * Make mumble-server depend on dbus. (LP: #202672)
+  * Avoid crash when renaming tree objects (patch from upstream SVN).
+  * Remove a warning when installing (missing --no-create-home).
+
+ -- Thorvald Natvig <slicer@users.sourceforge.net>  Sat, 22 Mar 2008 01:25:00 +0200
+
+mumble (1.1.3-1) unstable; urgency=low
+
+  * Initial release.
+    Closes: #429988
+
+ -- Patrick Matthäi <patrick.matthaei@web.de>  Sun, 16 Mar 2008 11:09:08 +0100
+
+mumble (1.1.3-0ubuntu1) hardy; urgency=low
+
+  * New upstream version, which fixes a few crashbugs.
+  * Licensing issues worked out, package is now BSD licensed (same as
+    source).
+  * Mumble-specific changes to Speex are now in upstream Speex, and
+    this version includes all changes necessary to mumble to unbundle
+    Speex. Once Speex 1.2beta4 or 1.2 final is out, unbundling can be
+    completed.
+  * Changed to use PulseAudio as default audio device, as it's the
+    new default in Hardy.
+  * Moved the perl cgi scripts for mumble-server into a separate package,
+    which means mumble-server doesn't depend on httpd and
+    mail-transport-agent. Those dependencies were also missing from
+    mumble-server.
+  * Updated packaging to adhere to "Debian Developer's Reference -
+    Best Packaging Practices."
+  * Closes the request to update to 1.1.3 (LP: #194836)
+
+ -- Thorvald Natvig <slicer@users.sourceforge.net>  Sat, 23 Feb 2008 19:00:00 +0200
+
+mumble (1.1.2-0ubuntu1) hardy; urgency=low
+
+  * Packaging for inclusion in ubuntu universe (LP: #129081)
+
+ -- Thorvald Natvig <slicer@users.sourceforge.net>  Mon, 03 Dec 2007 10:40:00 +0200

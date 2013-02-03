@@ -1,0 +1,80 @@
+# Copyright (C) 2010
+# This file is distributed under the same license as the mumble package.
+#
+# Bjørn Steensrud <bjornst@skogkatt.homelinux.org>, 2010.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: mumble@packages.debian.org\n"
+"POT-Creation-Date: 2010-01-11 16:52+0100\n"
+"PO-Revision-Date: 2010-10-15 14:25+0200\n"
+"Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
+"Language-Team: Norwegian Bokmål <i18n-nb@lister.ping.uio.no>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. Type: password
+#. Description
+#: ../mumble-server.templates:1001
+msgid "Password to set on SuperUser account:"
+msgstr "Passord som skal settes på superbruker-kontoen"
+
+#. Type: password
+#. Description
+#: ../mumble-server.templates:1001
+msgid ""
+"Murmur has a special account called \"SuperUser\" which bypasses all "
+"privilege checks."
+msgstr ""
+"Murmur har en spesiell konto som heter «SuperUser» som utelater alle "
+"privilegiekontroller."
+
+#. Type: password
+#. Description
+#: ../mumble-server.templates:1001
+msgid ""
+"If you set a password here, the password for the \"SuperUser\" account will "
+"be updated."
+msgstr ""
+"Hvis du oppgir et passord her, så blir passordet på «SuperUser»-kontoen "
+"oppdatert."
+
+#. Type: password
+#. Description
+#: ../mumble-server.templates:1001
+msgid "If you leave this blank, the password will not be changed."
+msgstr "Hvis du lar det stå tomt, så blir passordet ikke endret."
+
+#. Type: boolean
+#. Description
+#: ../mumble-server.templates:2001
+msgid "Autostart mumble-server on server boot?"
+msgstr "Skal mumble-tjeneren startes automatisk ved tjeneroppstart?"
+
+#. Type: boolean
+#. Description
+#: ../mumble-server.templates:2001
+msgid ""
+"Mumble-server (murmurd) can start automatically when the server is booted."
+msgstr ""
+"Mumble-tjeneren (murmurd) kan starte automatisk når tjeneren startes opp."
+
+#. Type: boolean
+#. Description
+#: ../mumble-server.templates:3001
+msgid "Allow mumble-server to use higher priority?"
+msgstr "Tillat mumble-tjener å bruke høyere prioritet?"
+
+#. Type: boolean
+#. Description
+#: ../mumble-server.templates:3001
+msgid ""
+"Mumble-server (murmurd) can use higher process and network priority to "
+"ensure low latency audio forwarding even on highly loaded servers."
+msgstr ""
+"Mumble-tjeneren (murmurd) kan bruke høyere prosess- og nettverksprioritet "
+"for å sikre lydframsending med lav latenstid selv på tjenere med tung last."

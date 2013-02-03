@@ -1,0 +1,47 @@
+Index: b/src/murmur/Messages.cpp
+===================================================================
+--- a/src/murmur/Messages.cpp
++++ b/src/murmur/Messages.cpp
+@@ -203,6 +203,7 @@
+ 	mpcrypt.set_client_nonce(std::string(reinterpret_cast<const char *>(uSource->csCrypt.decrypt_iv), AES_BLOCK_SIZE));
+ 	sendMessage(uSource, mpcrypt);
+ 
++	bool fake_celt_support = false;
+ 	if (msg.celt_versions_size() > 0) {
+ 		for (int i=0;i < msg.celt_versions_size(); ++i)
+ 			uSource->qlCodecs.append(msg.celt_versions(i));
+@@ -219,6 +220,12 @@
+ 	mpcv.set_opus(bOpus);
+ 	sendMessage(uSource, mpcv);
+ 
++	if (!bOpus && uSource->bOpus && fake_celt_support) {
++		sendTextMessage(NULL, uSource, false, QLatin1String("<strong>WARNING:</strong> Your client doesn't support the CELT codec, you won't be able to talk to or hear most clients. Please make sure your client was built with CELT support."));
++	} else if (bOpus && !uSource->bOpus) {
++		sendTextMessage(NULL, uSource, false, QLatin1String("<strong>WARNING:</strong> Your client doesn't support the Opus codec, you won't be able to talk or hear anyone. Please upgrade to a client with Opus support."));
++	}
++
+ 	// Transmit channel tree
+ 	QQueue<Channel *> q;
+ 	QSet<Channel *> chans;
+Index: b/src/murmur/Server.cpp
+===================================================================
+--- a/src/murmur/Server.cpp
++++ b/src/murmur/Server.cpp
+@@ -773,6 +773,8 @@
+ 					case MessageHandler::UDPVoiceSpeex:
+ 					case MessageHandler::UDPVoiceCELTAlpha:
+ 					case MessageHandler::UDPVoiceCELTBeta:
++						if (bOpus)
++							break;
+ 					case MessageHandler::UDPVoiceOpus: {
+ 							u->bUdp = true;
+ 							processMsg(u, buffer, len);
+@@ -1275,6 +1277,8 @@
+ 			case MessageHandler::UDPVoiceCELTAlpha:
+ 			case MessageHandler::UDPVoiceCELTBeta:
+ 			case MessageHandler::UDPVoiceSpeex:
++				if (bOpus)
++					break;
+ 			case MessageHandler::UDPVoiceOpus:
+ 				processMsg(u, buffer, l);
+ 				break;

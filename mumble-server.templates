@@ -1,0 +1,23 @@
+Template: mumble-server/password
+Type: password
+_Description: Password to set on SuperUser account:
+ Murmur has a special account called "SuperUser" which bypasses all
+ privilege checks.
+ .
+ If you set a password here, the password for the "SuperUser" account will
+ be updated.
+ .
+ If you leave this blank, the password will not be changed.
+
+Template: mumble-server/start_daemon
+Type: boolean
+Default: true
+_Description: Autostart mumble-server on server boot?
+ Mumble-server (murmurd) can start automatically when the server is booted.
+
+Template: mumble-server/use_capabilities
+Type: boolean
+Default: false
+_Description: Allow mumble-server to use higher priority?
+ Mumble-server (murmurd) can use higher process and network priority to
+ ensure low latency audio forwarding even on highly loaded servers.

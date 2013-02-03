@@ -1,0 +1,95 @@
+#! /bin/sh
+# postinst script for mumble-server
+
+set -e
+
+. /usr/share/debconf/confmodule
+
+# summary of how this script can be called:
+#        * <postinst> `configure' <most-recently-configured-version>
+#        * <old-postinst> `abort-upgrade' <new version>
+#        * <conflictor's-postinst> `abort-remove' `in-favour' <package>
+#          <new-version>
+#        * <postinst> `abort-remove'
+#        * <deconfigured's-postinst> `abort-deconfigure' `in-favour'
+#          <failed-install-package> <version> `removing'
+#          <conflicting-package> <version>
+# for details, see http://www.debian.org/doc/debian-policy/ or
+# the debian-policy package
+
+case "$1" in
+	configure)
+		# Add user and permanent directories
+		adduser --system --quiet --home /var/lib/mumble-server --group mumble-server
+		[ -d /var/lib/mumble-server ] || mkdir /var/lib/mumble-server
+		chmod 0750 /var/log/mumble-server
+		chmod 0750 /var/lib/mumble-server
+		chown mumble-server:adm /var/log/mumble-server
+		chown mumble-server:mumble-server /var/lib/mumble-server
+		if [ -f /etc/mumble-server.ini ]; then
+			chmod 0640 /etc/mumble-server.ini
+			chown root:mumble-server /etc/mumble-server.ini
+		fi
+		# Workaround for when this was in .dirs
+		[ -d /var/run/mumble-server ] && chown mumble-server:adm /var/run/mumble-server
+
+		# Ensure the file we put in /etc/dbus-1/system.d is loaded
+		# or mumble-server will fail to bind to dbus.
+		invoke-rc.d --quiet dbus force-reload || true
+
+		# Update /etc/default file based on config
+		if [ -f /etc/default/mumble-server ] ; then
+			db_get mumble-server/start_daemon
+			if [ "$RET" = "true" ] ; then
+				DAEMON_START=1
+			else
+				DAEMON_START=0
+			fi
+			if grep -E ^MURMUR_DAEMON_START= /etc/default/mumble-server > /dev/null; then
+				perl -pi -w -e "s/^MURMUR_DAEMON_START=.+$/MURMUR_DAEMON_START=$DAEMON_START/g" /etc/default/mumble-server
+			else
+				echo "MURMUR_DAEMON_START=$DAEMON_START" >> /etc/default/mumble-server
+			fi
+
+			db_get mumble-server/use_capabilities
+			if [ "$RET" = "true" ] ; then
+				USE_CAPABILITIES=1
+			else
+				USE_CAPABILITIES=0
+			fi
+			if grep -E ^MURMUR_USE_CAPABILITIES= /etc/default/mumble-server > /dev/null; then
+				perl -pi -w -e "s/^MURMUR_USE_CAPABILITIES=.+$/MURMUR_USE_CAPABILITIES=$USE_CAPABILITIES/g" /etc/default/mumble-server
+			else
+				echo "MURMUR_USE_CAPABILITIES=$USE_CAPABILITIES" >> /etc/default/mumble-server
+			fi
+		else
+			echo "/etc/default/mumble-server not found, configuration failed." >&2
+		fi
+
+		# Update SuperUser password based on config.
+		# When set, clear it from config as it can't be queried and the user is
+		# likely to update it outside of debconf.
+		db_get mumble-server/password
+		if [ "$RET" != "" ] ; then
+			echo $RET | su mumble-server -s /bin/sh -c "/usr/sbin/murmurd -ini /etc/mumble-server.ini -readsupw"
+			if [ $? = 0 ] ; then
+				db_set mumble-server/password ""
+			else
+				echo "Failed to set SuperUser password." >&2
+			fi
+		fi
+		db_stop
+	;;
+
+	abort-upgrade|abort-remove|abort-deconfigure)
+	;;
+
+	*)
+		echo "postinst called with unknown argument \`$1'" >&2
+		exit 1
+	;;
+esac
+
+#DEBHELPER#
+
+exit 0

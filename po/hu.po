@@ -1,0 +1,100 @@
+# Hungarian translation for mumble
+# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
+# This file is distributed under the same license as the mumble package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mumble\n"
+"Report-Msgid-Bugs-To: mumble@packages.debian.org\n"
+"POT-Creation-Date: 2010-01-11 16:52+0100\n"
+"PO-Revision-Date: 2010-01-22 23:21+0000\n"
+"Last-Translator: SPeck <Unknown>\n"
+"Language-Team: Hungarian <hu@li.org>\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2010-02-03 13:28+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#. Type: password
+#. Description
+#: ../mumble-server.templates:1001
+msgid "Password to set on SuperUser account:"
+msgstr "Jelszó beállítás a rendszergazda hozzáféréshez"
+
+#. Type: password
+#. Description
+#: ../mumble-server.templates:1001
+msgid ""
+"Murmur has a special account called \"SuperUser\" which bypasses all "
+"privilege checks."
+msgstr ""
+"Murmur vagy egy speciális hozzáférése amit \"Rendszergazdának\" hívnak amely "
+"végigmegy minden biztonsági ellenőrzésen"
+
+#. Type: password
+#. Description
+#: ../mumble-server.templates:1001
+msgid ""
+"If you set a password here, the password for the \"SuperUser\" account will "
+"be updated."
+msgstr ""
+"Ha itt beállítod a jelszót, a jelszó a \"Rendszergazda\"-hoz tartozó jelszó "
+"fog frissíteni"
+
+#. Type: password
+#. Description
+#: ../mumble-server.templates:1001
+msgid "If you leave this blank, the password will not be changed."
+msgstr "Ha üresen elhagyod ezt az ablakot, a jelszó nem fog megváltozni."
+
+#. Type: boolean
+#. Description
+#: ../mumble-server.templates:2001
+msgid "Autostart mumble-server on server boot?"
+msgstr "Mumble server automatikus indítása rendszerindításnál?"
+
+#. Type: boolean
+#. Description
+#: ../mumble-server.templates:2001
+msgid ""
+"Mumble-server (murmurd) can start automatically when the server is booted."
+msgstr ""
+"A Mumble-server (murmurd) automatikusan nem indul el ha a szerverrel "
+"bebootolsz."
+
+#. Type: boolean
+#. Description
+#: ../mumble-server.templates:3001
+#, fuzzy
+#| msgid "Autostart mumble-server on server boot?"
+msgid "Allow mumble-server to use higher priority?"
+msgstr "Mumble server automatikus indítása rendszerindításnál?"
+
+#. Type: boolean
+#. Description
+#: ../mumble-server.templates:3001
+msgid ""
+"Mumble-server (murmurd) can use higher process and network priority to "
+"ensure low latency audio forwarding even on highly loaded servers."
+msgstr ""
+
+#~ msgid "Email address to send registration emails from:"
+#~ msgstr "Email cím amelyről a regisztrál emaileket szeretnéd küldeni"
+
+#~ msgid ""
+#~ "Murmur comes with a web-based registration script, which will send an "
+#~ "authentication code to the user by email before registration can be "
+#~ "completed."
+#~ msgstr ""
+#~ "Murmur web alapú regisztrációs scriptet tartalmaz, amely érvényesítő "
+#~ "kódot fog küldeni a felhasználó email címére"
+
+#~ msgid ""
+#~ "Set this to the email address you wish such authentication emails to come "
+#~ "from. If you set it blank, registration will be disabled."
+#~ msgstr ""
+#~ "Állítsa be ezt az email címet, amennyiben erről akar küldeni értesítő "
+#~ "emaileket. Ha üresen hagyod a regisztráció ki lessz kapcsolva"

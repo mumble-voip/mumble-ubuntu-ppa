@@ -1,0 +1,73 @@
+# Japanese translation for the mumble-server package.
+# Copyright (C) 2008 by Masayuki Hamasaki
+# This file is distributed under the same license as the mumble package.
+#
+# Masayuki Hamasaki <ikasamah@users.sourceforge.net>, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.2.1-3\n"
+"Report-Msgid-Bugs-To: mumble@packages.debian.org\n"
+"POT-Creation-Date: 2010-01-11 16:52+0100\n"
+"PO-Revision-Date: 2010-01-13 13:27+900\n"
+"Last-Translator: Masayuki Hamasaki <ikasamah@users.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: password
+#. Description
+#: ../mumble-server.templates:1001
+msgid "Password to set on SuperUser account:"
+msgstr "SuperUserアカウントのパスワード:"
+
+#. Type: password
+#. Description
+#: ../mumble-server.templates:1001
+msgid ""
+"Murmur has a special account called \"SuperUser\" which bypasses all "
+"privilege checks."
+msgstr "Murmurには\"SuperUser\"と呼ばれる特権アカウントが存在します"
+
+#. Type: password
+#. Description
+#: ../mumble-server.templates:1001
+msgid ""
+"If you set a password here, the password for the \"SuperUser\" account will "
+"be updated."
+msgstr "パスワードを設定すると、\"SuperUser\"のアカウントが更新されます"
+
+#. Type: password
+#. Description
+#: ../mumble-server.templates:1001
+msgid "If you leave this blank, the password will not be changed."
+msgstr "ここを空にすると、パスワードは変更されません"
+
+#. Type: boolean
+#. Description
+#: ../mumble-server.templates:2001
+msgid "Autostart mumble-server on server boot?"
+msgstr "起動時に自動的にmumble-serverを開始しますか？"
+
+#. Type: boolean
+#. Description
+#: ../mumble-server.templates:2001
+msgid ""
+"Mumble-server (murmurd) can start automatically when the server is booted."
+msgstr "Mumble-Server (murmurd) は起動時に自動的に開始することができます"
+
+#. Type: boolean
+#. Description
+#: ../mumble-server.templates:3001
+msgid "Allow mumble-server to use higher priority?"
+msgstr "起動時に自動的にmumble-serverを開始しますか？"
+
+#. Type: boolean
+#. Description
+#: ../mumble-server.templates:3001
+msgid ""
+"Mumble-server (murmurd) can use higher process and network priority to "
+"ensure low latency audio forwarding even on highly loaded servers."
+msgstr ""
+"高負荷時でも音声の転送を低レイテンシーで行うために、Mumble-server (murmurd) は"
+"プロセスとネットワークを高い優先度で使用することができます"

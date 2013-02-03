@@ -1,0 +1,17 @@
+#! /bin/sh
+# preinst script for mumble-server
+
+set -e
+
+if [ -f /etc/mumble-server/mumble-server.ini ] ; then
+	if [ ! -f /etc/mumble-server.ini ] ; then
+		echo "Moving /etc/mumble-server/mumble-server.ini to /etc/mumble-server.ini.."
+		mv /etc/mumble-server/mumble-server.ini /etc/mumble-server.ini
+		rmdir --ignore-fail-on-non-empty /etc/mumble-server/
+		echo "Done."
+	fi
+fi
+
+#DEBHELPER#
+
+exit 0

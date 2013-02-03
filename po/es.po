@@ -1,0 +1,129 @@
+# mumble po-debconf translation to Spanish
+# Copyright (C) 2010 Software in the Public Interest
+# This file is distributed under the same license as the mumble package.
+#
+# Changes:
+#   - Initial translation
+#       Álvaro M. Recio
+#
+#   - Updates
+#       Omar Campagne <ocampagne@gmail.com>, 2010
+#
+# Traductores, si no conocen el formato PO, merece la pena leer la
+# documentación de gettext, especialmente las secciones dedicadas a este
+# formato, por ejemplo ejecutando:
+#       info -n '(gettext)PO Files'
+#       info -n '(gettext)Header Entry'
+#
+# Equipo de traducción al español, por favor lean antes de traducir
+# los siguientes documentos:
+#
+#   - El proyecto de traducción de Debian al español
+#     http://www.debian.org/intl/spanish/
+#     especialmente las notas y normas de traducción en
+#     http://www.debian.org/intl/spanish/notas
+#
+#   - La guía de traducción de po's de debconf:
+#     /usr/share/doc/po-debconf/README-trans
+#     o http://www.debian.org/intl/l10n/po-debconf/README-trans
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mumble\n"
+"Report-Msgid-Bugs-To: mumble@packages.debian.org\n"
+"POT-Creation-Date: 2010-01-11 16:52+0100\n"
+"PO-Revision-Date: 2010-07-25 17:25+0200\n"
+"Last-Translator: Omar Campagne <ocampagne@gmail.com>\n"
+"Language-Team: Debian l10n Spanish <debian-l10n-spanish@lists.debian.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2009-02-03 18:56+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#. Type: password
+#. Description
+#: ../mumble-server.templates:1001
+msgid "Password to set on SuperUser account:"
+msgstr "Contraseña a utilizar para la cuenta «SuperUser»:"
+
+#. Type: password
+#. Description
+#: ../mumble-server.templates:1001
+msgid ""
+"Murmur has a special account called \"SuperUser\" which bypasses all "
+"privilege checks."
+msgstr ""
+"Murmur posee una cuenta especial llamada «SuperUser» para la que no se hacen "
+"ninguna de las comprobaciones de nivel de privilegios."
+
+#. Type: password
+#. Description
+#: ../mumble-server.templates:1001
+msgid ""
+"If you set a password here, the password for the \"SuperUser\" account will "
+"be updated."
+msgstr ""
+"Se actualizará la contraseña de la cuenta «SuperUser» si se define una "
+"contraseña aquí."
+
+#. Type: password
+#. Description
+#: ../mumble-server.templates:1001
+msgid "If you leave this blank, the password will not be changed."
+msgstr "La contraseña no se modificará si deja este valor en blanco."
+
+#. Type: boolean
+#. Description
+#: ../mumble-server.templates:2001
+msgid "Autostart mumble-server on server boot?"
+msgstr "¿Desea iniciar automáticamente mumble-server al arrancar el servidor?"
+
+#. Type: boolean
+#. Description
+#: ../mumble-server.templates:2001
+msgid ""
+"Mumble-server (murmurd) can start automatically when the server is booted."
+msgstr ""
+"Mumble-server («murmurd») se puede iniciar automáticamente al arrancar el "
+"servidor."
+
+#. Type: boolean
+#. Description
+#: ../mumble-server.templates:3001
+msgid "Allow mumble-server to use higher priority?"
+msgstr "¿Desea permitir que mumble-server use una prioridad más alta?"
+
+#. Type: boolean
+#. Description
+#: ../mumble-server.templates:3001
+msgid ""
+"Mumble-server (murmurd) can use higher process and network priority to "
+"ensure low latency audio forwarding even on highly loaded servers."
+msgstr ""
+"Mumble-server («murmurd») puede usar una prioridad de proceso y de red más "
+"alta de forma que pueda garantizar una latencia baja al reenviar audio "
+"incluso en servidores que tengan mucha carga."
+
+#~ msgid "Email address to send registration emails from:"
+#~ msgstr ""
+#~ "Dirección de correo electrónico desde la que enviar los correos de "
+#~ "registro:"
+
+#~ msgid ""
+#~ "Murmur comes with a web-based registration script, which will send an "
+#~ "authentication code to the user by email before registration can be "
+#~ "completed."
+#~ msgstr ""
+#~ "Murmur incluye un guión para el registro basado en web, que enviará por "
+#~ "correo al usuario un código de autenticación para que pueda completar el "
+#~ "registro."
+
+#~ msgid ""
+#~ "Set this to the email address you wish such authentication emails to come "
+#~ "from. If you set it blank, registration will be disabled."
+#~ msgstr ""
+#~ "Escriba aquí la dirección de correo electrónico desde la que desea que se "
+#~ "envíen estos mensajes. Si deja esto en blanco, se desactivarán los "
+#~ "registros."
