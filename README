@@ -8,7 +8,7 @@ General Idea
 ============
 
 The idea of this package is to be a base from which packages for various
-Ubuntu releases can be built.
+Ubuntu PPA builds can be built from.
 
 All the entries made by the Mumble team in the changelog are made for
 a special release called 'template'. For example, the latest release
@@ -25,6 +25,10 @@ changelog entry is:
 
 All modifications made in the base template should target the template release
 and use the debian version '0~template1' (and bump if appropriate).
+
+Every time the Mumble team updates the template package, one of these template
+entries will be added. The package version number that is used is simply a
+reflection of the current Mumble package at the time of the update.
 
 When building a source package for upload to Launchpad, the ppagen.bash script
 (which also lives in this repository) can be used. For example, to generate
