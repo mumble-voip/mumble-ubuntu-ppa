@@ -24,6 +24,8 @@ configure-stamp:
 	CONFIG*=no-embed-qt-translations \
 	CONFIG*=packaged \
 	CONFIG*=quiet-build-log \
+	CONFIG*=bundled-celt \
+	CONFIG*=bundled-opus \
 	DEFINES*=NO_UPDATE_CHECK \
 	DEFINES*=PLUGIN_PATH=/usr/lib/mumble \
 	DEFINES*=MUMBLE_VERSION=$(MUMBLE_DEB_VERSION) \

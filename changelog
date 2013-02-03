@@ -1,3 +1,11 @@
+mumble (1.2.4~rc1-8-gb115a29-0~template1) template; urgency=low
+
+  * Drop version requirement on libzeroc-ice-dev to build on precise.
+  * Use bundled CELT codecs to build on raring.
+  * Add CONFIG+=bundled-opus to force the use of the bundled Opus library.
+
+ -- Mikkel Krautz <mikkel@krautz.dk>  Sat, 03 Feb 2013 14:39:40 +0100
+
 mumble (1.2.3-349-g315b5f5-2ubuntu2) quantal; urgency=low
 
   * Make the package compatible with the rest of the world, yet again,

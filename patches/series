@@ -1,7 +1,2 @@
 02-reject-with-ip-in-log.diff
 05-lsb-description.diff
-#You are kidding me right http://bugs.debian.org/682010
-#10-use-celt-guard
-15-fix-noise-in-opus-mode
-20-add-opus-threshold-option
-25-add-codec-warnings

@@ -1,8 +1,8 @@
 Source: mumble
 Section: sound
 Priority: optional
-Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-XSBC-Original-Maintainer: Ron Lee <ron@debian.org>
+Maintainer: Mikkel Krautz <mikkel@krautz.dk>
+XSBC-Original-Maintainer: Ron Lee <ron@debian.org>, Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Uploaders: Thorvald Natvig <thorvald@debian.org>
 Build-Depends: debhelper (>= 7.0.8), g++-4.6,
  po-debconf,
@@ -17,12 +17,11 @@ Build-Depends: debhelper (>= 7.0.8), g++-4.6,
  libogg-dev,
  libspeex-dev,
  libspeexdsp-dev,
- libcelt-dev (>= 0.7.0),
  libsndfile1-dev,
  libssl-dev,
- libzeroc-ice34-dev (>= 3.4.2-8.1),
- ice34-translators (>= 3.4.2-8.1),
- ice34-slice (>= 3.4.2-8.1),
+ libzeroc-ice34-dev,
+ ice34-translators,
+ ice34-slice,
  libg15daemon-client-dev,
  libspeechd-dev,
  protobuf-compiler,
@@ -32,14 +31,13 @@ Build-Depends: debhelper (>= 7.0.8), g++-4.6,
  libcap-dev [linux-any]
 Standards-Version: 3.9.3.1
 Homepage: http://mumble.sourceforge.net/
-Vcs-Git: git://git.debian.org/users/ron/mumble.git
-Vcs-Browser: http://git.debian.org/?p=users/ron/mumble.git;a=summary
+Vcs-Git: git://github.com/mumble-voip/mumble-ubuntu-ppa.git
+Vcs-Browser: https://github.com/mumble-voip/mumble-ubuntu-ppa
 
 Package: mumble
 Architecture: any
 Depends: ${shlibs:Depends},
  ${misc:Depends},
- libcelt0 (>= 0.7.0) | libcelt0-0 (>= 0.7.1~),
  libqt4-sql-sqlite,
  lsb-release
 Recommends: speech-dispatcher
