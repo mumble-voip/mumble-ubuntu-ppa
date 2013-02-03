@@ -1,0 +1,71 @@
+Mumble Ubuntu PPA template package
+==================================
+
+This git repository contains a template Debian package that we use to
+generate the Mumble PPAs that live on Launchpad: https://launchpad.net/~mumble
+
+General Idea
+============
+
+The idea of this package is to be a base from which packages for various
+Ubuntu releases can be built.
+
+All the entries made by the Mumble team in the changelog are made for
+a special release called 'template'. For example, the latest release
+as of this writing is 1.2.4~rc1-8-gb115a29-0~template1 and the whole
+changelog entry is:
+
+    mumble (1.2.4~rc1-8-gb115a29-0~template1) template; urgency=low
+
+      * Drop version requirement on libzeroc-ice-dev to build on precise.
+      * Use bundled CELT codecs to build on raring.
+      * Add CONFIG+=bundled-opus to force the use of the bundled Opus library.
+
+     -- Mikkel Krautz <mikkel@krautz.dk>  Sat, 03 Feb 2013 14:39:40 +0100
+
+All modifications made in the base template should target the template release
+and use the debian version '0~template1' (and bump if appropriate).
+
+When building a source package for upload to Launchpad, the ppagen.bash script
+(which also lives in this repository) can be used. For example, to generate
+a package using the template, use:
+
+ ./ppagen.bash 1.2.4~rc1-8-gb115a29 quantal 1 --dry-run  # drop --dry run to upload
+
+and without dry run, uploaded to the mumble-snapshot PPA
+(which lives at https://launchpad.net/~mumble/+archive/snapshot):
+
+ ./ppagen.bash 1.2.4~rc1-8-gb115a29 quantal 1 --snapshot  # use --release to upload
+                                                          # to the mumble-release PPA
+
+The ppagen.bash script will, when running the above command:
+
+ * Download the Mumble tarball for the given version (and a GPG .sig)
+ * Verify the signature
+ * Clone the mumble-ubuntu-ppa repository into the 'debian' folder
+   in the root of the source tree.
+ * Add a new changelog entry for the PPA build.
+ * Upload it to the mumble-snapshot PPA (https://launchpad.net/~mumble/+archive/snapshot)
+
+The changelog entry that the script adds will be of the form:
+
+    mumble (1.2.4~rc1-8-gb115a29-1~ppa1~quantal1) quantal; urgency=low
+
+      * PPA Upload of 1.2.4~rc1-8-gb115a29 snapshot for Ubuntu quantal
+
+     -- Mikkel Krautz <mikkel@krautz.dk>   Sun, 03 Feb 2013 15:19:02 +0100
+
+with the latest template changelog entry exactly below it:
+
+    mumble (1.2.4~rc1-8-gb115a29-0~template1) template; urgency=low
+
+      * Drop version requirement on libzeroc-ice-dev to build on precise.
+      * Use bundled CELT codecs to build on raring.
+      * Add CONFIG+=bundled-opus to force the use of the bundled Opus library.
+
+     -- Mikkel Krautz <mikkel@krautz.dk>  Sat, 03 Feb 2013 14:39:40 +0100
+
+That is, the changelog entry that is added by the ppagen.bash script is merely
+a temporary indicator of the fact that a PPA build was performed (oh, and it of
+course also provides the version number to use for the package and the release
+to target).
