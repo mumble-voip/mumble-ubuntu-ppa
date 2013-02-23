@@ -34,7 +34,23 @@ $file .= "\n";
 
 $file =~ s/(\nBuild-Depends: [^\n]+)exim4/\1postfix/g;
 $file =~ s/(\nDepends: [^\n]+)exim4/\1postfix/g;
+$file =~ s/g\+\+-4.6, //g;
 
 open(F, ">debian/control") or croak;
 print F $file;
 close(F);
+
+$file = '';
+open(F, "debian/rules") or croak;
+while (<F>) {
+  $file .= $_;
+}
+close(F);
+
+$file =~ s/g\+\+-4.6/g\+\+/g;
+$file =~ s/gcc-4.6/gcc/g;
+
+open(F, ">debian/rules") or croak;
+print F $file;
+close(F);
+
