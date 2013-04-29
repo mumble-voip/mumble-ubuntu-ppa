@@ -1,6 +1,7 @@
 release/mumble usr/bin/
 release/libmumble.so* usr/lib/mumble/
-release/libcelt0.so.?.?.? usr/lib/mumble/
+release/libcelt0.so.0.7.0 usr/lib/mumble/
+release/libcelt0.so.0.11.0 usr/lib/mumble/
 release/plugins/lib*.so usr/lib/mumble/
 icons/mumble.xpm usr/share/pixmaps/
 icons/mumble.svg usr/share/icons/hicolor/scalable/apps/
