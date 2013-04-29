@@ -1,3 +1,9 @@
+mumble (1.2.4~rc1-12-gdab8157-0~template1) template; urgency=low
+
+  * Ensure that the bundled CELT codecs are included in the .deb.
+
+ -- Mikkel Krautz <mikkel@krautz.dk>  Mon, 29 Apr 2013 20:22:43 +0200
+
 mumble (1.2.4~rc1-8-gb115a29-0~template1) template; urgency=low
 
   * Drop version requirement on libzeroc-ice-dev to build on precise.
