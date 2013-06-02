@@ -99,7 +99,7 @@ cd mumble-${VERSION}
 git clone ${REPO} debian
 if [ -x debian/backports/${DIST} ]; then perl debian/backports/${DIST}; fi
 cd debian
-dch -v ${VERSION}${DEBVER} -D ${DIST} "PPA Upload of ${VERSION} snapshot for Ubuntu ${DIST}"
+dch -v ${VERSION}${DEBVER} -D ${DIST} "PPA Upload of ${VERSION} for Ubuntu ${DIST}"
 
 if [ $BUILD -eq 0 ]; then
 	debuild -S -sa
