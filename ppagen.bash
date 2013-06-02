@@ -105,7 +105,7 @@ if [ $BUILD -eq 0 ]; then
 	debuild -S -sa
 	cd ../../
 	if [ $DRY_RUN -eq 0 ]; then
-		dput mumble-snapshot mumble_${VERSION}${DEBVER}_source.changes
+		dput ${TARGET} mumble_${VERSION}${DEBVER}_source.changes
 		rm -rf ${tempdir}
 	else
 		echo "Skipping puload of source.changes in dry run mode."
