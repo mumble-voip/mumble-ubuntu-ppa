@@ -1,0 +1,80 @@
+commit dee463ef52d8406d0a925facfabead616f0f9dc2
+Author: Mikkel Krautz <mikkel@krautz.dk>
+Date:   Sat Jun 8 14:35:34 2013 +0200
+
+    bonjour: use Qt::AutoConnection for BonjourServiceResolver's QSocketNotifier slot.
+    
+    Using a QueuedConnection for the slot had the unpleasant
+    side effect that the QSocketNotifier could have its activated()
+    slot invoked even though no data was waiting to be read.
+    
+    In our case, this could cause a deadlock inside Avahi's
+    libdns_sd compatibility library.
+    
+    I've settled on using Qt::AutoConnection to be consitent
+    with the rest of the code base. The Bonjour code should
+    always be invoked from the main thread, so in this case
+    Qt::AutoConnection will always mean Qt::DirectConnection.
+    
+    Why does this happen?  Qt seems to process events before
+    invoking queued slot invocations.  If the Qt event loop
+    finds that the file descriptor that our QSocketNotifier
+    is providing notification for is ready for reading, it
+    queues up an invocation of the activated() slot for the
+    next event loop iteration (because we use a QueuedConnection).
+    
+    As mentioned above, because Qt seems to poll() FDs before
+    invoking queued-up slots, the end result is that an
+    invocation of the activated() slot for a given
+    QSocketNotifier's file descriptor can be queued up in
+    the very same event loop iteration that a read() is
+    performed for the exact same file descriptor.
+    
+    After performing the read(), the queued-up activated()
+    slot invocation is no longer valid, and can wreak havoc,
+    which in our case causes a deadlock in the Avahi libdns_sd
+    code.
+    
+    The flow below describes the event loop iterations
+    in more detail:
+    
+    1st event loop iteration
+    ------------------------
+    * poll() is invoked; the QSocketNotifier's FD is
+      ready for reading.
+    * An invocation of the activated() slot is queued
+      up, to be executed next time we enter the event
+      loop (due to Qt::QueuedConnection).
+    
+    2nd event loop iteration
+    ------------------------
+    * poll() is invoked; the QSocketNotifier's FD is
+      _still_ ready for reading.
+    * An invocation of the activated() slot is again
+      queued up, to be executed in the 3rd iteration.
+    * The queued-up slot invocation from the 1st iteration
+      is invoked. (read() is called.)
+    
+    3rd event loop iteration
+    ------------------------
+    * poll is invoked(); the QSocketNotifier's FD has
+      nothing to read anymore. Everything was read in
+      the activated() slot that was invoked in the
+      2nd iteration.
+    * The queued-up slot invocation from the 2nd iteration
+      is invoked. This time, the read() syscall will block,
+      because there is nothing to read.
+
+diff --git a/src/bonjour/BonjourServiceResolver.cpp b/src/bonjour/BonjourServiceResolver.cpp
+index 7b5f632..99f2bc1 100644
+--- a/src/bonjour/BonjourServiceResolver.cpp
++++ b/src/bonjour/BonjourServiceResolver.cpp
+@@ -63,7 +63,7 @@ void BonjourServiceResolver::resolveBonjourRecord(const BonjourRecord &record) {
+ 			err = kDNSServiceErr_Invalid;
+ 		} else {
+ 			rr->bonjourSocket = new QSocketNotifier(sockfd, QSocketNotifier::Read, this);
+-			connect(rr->bonjourSocket, SIGNAL(activated(int)), this, SLOT(bonjourSocketReadyRead(int)), Qt::QueuedConnection);
++			connect(rr->bonjourSocket, SIGNAL(activated(int)), this, SLOT(bonjourSocketReadyRead(int)));
+ 			qmResolvers.insert(sockfd, rr);
+ 			return;
+ 		}
