@@ -1,3 +1,15 @@
+mumble (1.2.4-0~template2) template; urgency=low
+
+  * Build with DEB_BUILD_HARDENING_BINDNOW=0 to ensure
+    that the Mumble overlay is built without "-z now".
+    All other Mumble build products are still linked
+    using "-z now" (Mumble's build does it by default).
+    Fixes unresolved gl* symbol errors when using mumble-overlay.
+  * Include patch that fixes a hang in the ConnectDialog
+    when using Bonjour (LAN servers).
+
+ -- Mikkel Krautz <mikkel@krautz.dk>  Sat, 08 Jun 2013 17:20:05 +0200
+
 mumble (1.2.4-0~template1) template; urgency=low
 
   * Use unversioned Boost for the lucid backport.
