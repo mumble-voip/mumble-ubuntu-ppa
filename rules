@@ -3,6 +3,29 @@
 #export DH_VERBOSE=1
 export DEB_BUILD_HARDENING=1
 
+# The default Mumble build for Unix-like systems
+# uses the "-z now" linker flag by default on all
+# build products that support it, causing all dynamic
+# symbols to be resolved when the program is loaded.
+#
+# However, the Mumble overlay (libmumble.so, a shared
+# library that is often LD_PRELOAD'ed into games),
+# expects to be able to resolve OpenGL symbols at
+# runtime without linking against a specific libGL
+# implementation.
+#
+# Linking it as "-z now" defeats that, as the
+# loader will attempt to resolve the overlay's
+# OpenGL symbols at program start-up, which will
+# fail because it isn't linked against a library
+# providing those symbols.
+#
+# Disabling the hardening option below is equivalent
+# to not linking libmumble.so using the "-z now"
+# option. All other products are still linked with
+# "-z now".
+export DEB_BUILD_HARDENING_BINDNOW=0
+
 MAKEFILE = $(firstword $(MAKEFILE_LIST))
 SOURCE_DIR = $(dir $(MAKEFILE))..
 VERSION := $(shell dpkg-parsechangelog -l$(dir $(MAKEFILE))changelog | sed -ne 's/^Version: \(.*\)-.*/\1/p')
