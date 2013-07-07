@@ -1,3 +1,10 @@
+mumble (1.2.4-118-g63e3fd0-0~template1) template; urgency=low
+
+  * Remove Bonjour ConnectDialog hang patches, since they're included
+    in the 1.2.5 snapshots. 
+
+ -- Mikkel Krautz <mikkel@krautz.dk>  Mon, 08 Jul 2013 01:00:46 +0200
+
 mumble (1.2.4-0~template2) template; urgency=low
 
   * Build with DEB_BUILD_HARDENING_BINDNOW=0 to ensure
