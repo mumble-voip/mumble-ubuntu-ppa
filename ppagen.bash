@@ -112,7 +112,8 @@ if [ $IN_PLACE -eq 0 ]; then
 	if [ -x debian/backports/${DIST} ]; then perl debian/backports/${DIST}; fi
 	cd debian
 else
-	if [ "$(basename $PWD)" != "debian" ]; then
+	DEBIAN_DIR=$(basename "${PWD}")
+	if [ "${DEBIAN_DIR}" != "debian" ]; then
 		echo "Not in 'debian' dir during in-place build. Aborting."
 		exit 1
 	fi
