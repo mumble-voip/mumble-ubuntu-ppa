@@ -1,3 +1,25 @@
+mumble (1.2.5-0~template1) template; urgency=high
+
+  * Update package to version 1.2.5. This new release
+    fixes the following two vulnerabilities in Mumble:
+
+     Mumble-SA-2014-001 (CVE-2014-0044)
+
+      - A malformed Opus voice packet sent to a Mumble
+        client could trigger a NULL pointer dereference
+        or an out-of-bounds array access, leading to a
+        crash (Denial of Service).
+
+     Mumble-SA-2014-002 (CVE-2014-0045)
+
+      - A malformed Opus voice packet sent to a Mumble
+        client could trigger a heap-based buffer overflow.
+        This causes a client crash (Denial of Service) and
+        can potentially be used to execute arbitrary code,
+        though this is unconfirmed.
+
+ -- Mikkel Krautz <mikkel@krautz.dk>  Wed, 05 Feb 2014 14:53:43 +0100
+
 mumble (1.2.4-0~template2) template; urgency=low
 
   * Build with DEB_BUILD_HARDENING_BINDNOW=0 to ensure
