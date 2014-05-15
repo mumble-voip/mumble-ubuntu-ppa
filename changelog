@@ -1,3 +1,21 @@
+mumble (1.2.6-0~template1) template; urgency=high
+
+  * Update package to version 1.2.6. This release
+    fixes the following two vulnerabilities in Mumble:
+
+     Mumble-SA-2014-005
+
+       – SVG images with local file references
+         could trigger client DoS
+
+     Mumble-SA-2014-006
+
+       - The Mumble client did not properly HTML-escape
+         some external strings before using them in a
+         rich-text (HTML) context.
+
+ -- Mikkel Krautz <mikkel@krautz.dk>  Thu, 15 May 2014 02:16:38 +0200
+
 mumble (1.2.5-0~template1) template; urgency=high
 
   * Update package to version 1.2.5. This new release
