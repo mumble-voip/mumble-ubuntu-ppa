@@ -1,3 +1,19 @@
+mumble (1.2.7-0~template1) template; urgency=low
+
+  * Update package to version 1.2.7. This release
+    contains a couple of bug fixes:
+
+     - The log view in Mumble 1.2.6 didn’t correctly
+       scroll when an image is included in a text
+       message. (Issue #1258)
+
+     - Some users were unable to connect to Mumble
+       servers due to a “remote host closed the connection”
+       caused by a bug in the optional click-to-call
+       feature in Skype for Windows (Issue #1271)
+
+ -- Mikkel Krautz <mikkel@krautz.dk>  Sat, 14 Jun 2014 12:50:19 +0200
+
 mumble (1.2.6-0~template1) template; urgency=high
 
   * Update package to version 1.2.6. This release
