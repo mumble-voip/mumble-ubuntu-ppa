@@ -1,3 +1,25 @@
+mumble (1.2.8-0~template1) template; urgency=low
+
+  * Update package to version 1.2.8. This release
+    contains a couple of bug fixes:
+
+     - A PulseAudio issue that could cause the
+       Mumble client to crash on launch has been
+       fixed.
+
+     - Various source-level issues that made the
+       Mumble build fail when built with recent
+       versions of Clang has been fixed.
+
+     - An issue where the ConnectDialog could
+       hang in the Bonjour code has been
+       integrated into the 1.2.8 release.
+       A fix for this issue was previously
+       applied to these PPA packages via a patch.
+       This patch has been dropped.
+
+ -- Mikkel Krautz <mikkel@krautz.dk>  Sat, 09 Aug 2014 11:36:29 +0200
+
 mumble (1.2.7-0~template1) template; urgency=low
 
   * Update package to version 1.2.7. This release
