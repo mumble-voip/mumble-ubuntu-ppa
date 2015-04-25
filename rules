@@ -41,14 +41,14 @@ export DH_OPTIONS
 configure: configure-stamp
 configure-stamp:
 	dh_testdir
-	qmake-qt4 QMAKE_CXX=g++-4.6 QMAKE_CC=gcc-4.6 -recursive main.pro \
+	qmake-qt4 -recursive main.pro \
 	CONFIG*=release \
 	CONFIG*=symbols \
 	CONFIG*=no-embed-qt-translations \
 	CONFIG*=packaged \
 	CONFIG*=quiet-build-log \
 	CONFIG*=bundled-celt \
-	CONFIG*=bundled-opus \
+	CONFIG*=no-bundled-opus \
 	DEFINES*=NO_UPDATE_CHECK \
 	DEFINES*=PLUGIN_PATH=/usr/lib/mumble \
 	DEFINES*=MUMBLE_VERSION=$(MUMBLE_DEB_VERSION) \
@@ -73,8 +73,7 @@ clean:
 	dh_testroot
 	rm -f build-arch-stamp configure-stamp
 	[ ! -f Makefile ] || $(MAKE) distclean
-	[ ! -d gendoc ] || rm -rf Ice
-	rm -rf release debug
+	rm -rf release debug Ice
 	[ ! -d release-32 ] || rm -rf release-32
 	rm -f $(CURDIR)/debian/mumble-server.logrotate $(CURDIR)/mumble-server.init
 	debconf-updatepo
@@ -109,6 +108,8 @@ binary-common:
 	dh_gconf
 	dh_icons
 	dh_strip --dbg-package=mumble-dbg
+	# remove debug file libmumble.so.* which does not contain debug symbols
+	rm -vf ./debian/mumble-dbg/usr/lib/debug/usr/lib/mumble/libmumble.so.*
 	dh_compress
 	dh_fixperms
 	dh_installdeb

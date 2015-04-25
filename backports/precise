@@ -2,7 +2,7 @@
 #
 # Hook for automatic backports.
 #
-# Target dist: Ubuntu Utopic
+# Target dist: Ubuntu Precise
 
 use warnings;
 use strict;
@@ -15,6 +15,7 @@ while (<F>) {
 }
 close(F);
 
+$file =~ s/ice35/ice34/g;
 $file =~ s/ libopus-dev,\n//g;
 
 open(F, ">debian/control") or croak;

@@ -7,3 +7,7 @@ get web-accessible scripts.
 
 Murmur's root user is called SuperUser. To set the password for superuser,
 simply dpkg-reconfigure mumble-server.
+
+The mumble-server init script is silent concering messages to the console on
+startup/shutdown by default; if you wish to see start/stop messages to the
+console on upgrades, uncomment "VERBOSE=yes" in /etc/default/rcS.

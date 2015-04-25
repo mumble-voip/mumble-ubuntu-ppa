@@ -1,0 +1,15 @@
+Description: create logfiles owned by group adm in logrotate snippet
+Author: Jan Braun <janbraun@gmx.net>
+Bug-Debian: http://bugs.debian.org/759287
+Last-Updated: 2014-08-09
+
+--- mumble-1.2.8~7~g76f6870.orig/scripts/murmur.logrotate
++++ mumble-1.2.8~7~g76f6870/scripts/murmur.logrotate
+@@ -4,6 +4,7 @@
+ 	compress
+ 	delaycompress
+ 	missingok
++	create 640 mumble-server adm
+ 	postrotate
+ 		start-stop-daemon --quiet --oknodo --stop --signal 1 --exec /usr/sbin/murmurd --user mumble-server --pidfile /var/run/mumble-server/mumble-server.pid
+ 	endscript

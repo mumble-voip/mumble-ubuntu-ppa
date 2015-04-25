@@ -1,0 +1,9 @@
+# Lintian on Mentors complains that debian-watch-file-pubkey-file-is-missing
+# even though the signing key is in debian/upstream/signing-key.asc
+mumble source: debian-watch-file-pubkey-file-is-missing
+
+# Lintian now throws an error when build-depending on hardening-wrapper stating
+# that the package is obsolete, but #711193 states that the hardening-wrapper
+# is /not/ obsolete, but rather dpkg buildflags should be used instead when
+# possible -- however this is proving be difficult in the case of Mumble.
+mumble source: build-depends-on-obsolete-package build-depends: hardening-wrapper => use dpkg-buildflags instead
