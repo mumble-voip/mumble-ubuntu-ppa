@@ -15,6 +15,9 @@ while (<F>) {
 }
 close(F);
 
+$file =~ s/qt5-default[^,]*/libqt4-dev (>= 4.5.0)/;
+$file =~ s/libqt5opengl5-dev[^,]*/libqt4-opengl-dev (>= 4.5.0)/;
+$file =~ s/libqt5svg5-dev[^,],\n?//;
 $file =~ s/ice35/ice34/g;
 $file =~ s/ libopus-dev,\n//g;
 
@@ -29,6 +32,7 @@ while (<F>) {
 }
 close(F);
 
+$file =~ s/qmake /qmake-qt4 CONFIG*=qt4-legacy-compat /;
 $file =~ s/CONFIG\*=no-bundled-opus \\/CONFIG*=bundled-opus \\/;
 
 open(F, ">debian/rules") or croak;

@@ -7,9 +7,9 @@ Uploaders: Thorvald Natvig <thorvald@debian.org>
 Build-Depends: debhelper (>= 7.0.8),
  po-debconf,
  libboost-dev (>= 1.42),
- libboost-python-dev (>= 1.42),
- libqt4-dev (>= 4.5.0),
- libqt4-opengl-dev (>= 4.5.0),
+ qt5-default,
+ libqt5svg5-dev,
+ libqt5opengl5-dev,
  hardening-wrapper,
  libgl1-mesa-dev,
  libasound2-dev,
@@ -31,13 +31,13 @@ Build-Depends: debhelper (>= 7.0.8),
  libxi-dev,
  libcap-dev [linux-any]
 Standards-Version: 3.9.5
-Homepage: http://mumble.sourceforge.net/
+Homepage: http://www.mumble.info/
 
 Package: mumble
 Architecture: any
 Depends: ${shlibs:Depends},
  ${misc:Depends},
- libqt4-sql-sqlite,
+ libqt5sql5-sqlite,
  lsb-release
 Suggests: speech-dispatcher,
  mumble-server
@@ -56,7 +56,7 @@ Architecture: any
 Depends: ${shlibs:Depends},
  ${misc:Depends},
  adduser,
- libqt4-sql-sqlite
+ libqt5sql5-sqlite
 Suggests: mumble-django
 Description: Low latency encrypted VoIP server
  Murmur is the VoIP server component for Mumble. Murmur is installed

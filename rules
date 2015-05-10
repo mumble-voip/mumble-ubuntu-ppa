@@ -41,8 +41,7 @@ export DH_OPTIONS
 configure: configure-stamp
 configure-stamp:
 	dh_testdir
-	qmake-qt4 -recursive main.pro \
-	CONFIG*=qt4-legacy-compat \
+	qmake -recursive main.pro \
 	CONFIG*=release \
 	CONFIG*=symbols \
 	CONFIG*=no-embed-qt-translations \
