@@ -16,10 +16,11 @@ while (<F>) {
 close(F);
 
 $file =~ s/qt5-default[^,]*/libqt4-dev (>= 4.5.0)/;
+$file =~ s/[ \t]*qttools5-dev-tools[^,]*,\n?//;
 $file =~ s/libqt5opengl5-dev[^,]*/libqt4-opengl-dev (>= 4.5.0)/;
-$file =~ s/libqt5svg5-dev[^,],\n?//;
+$file =~ s/[ \t]*libqt5svg5-dev[^,]*,\n?//;
 $file =~ s/ice35/ice34/g;
-$file =~ s/ libopus-dev,\n//g;
+$file =~ s/[ \t]*libopus-dev[^,]*,\n?//;
 
 open(F, ">debian/control") or croak;
 print F $file;
