@@ -1,0 +1,60 @@
+#! /usr/bin/perl
+#
+# Hook for automatic backports.
+#
+# Target dist: Ubuntu Yakkety
+
+use warnings;
+use strict;
+use Carp;
+
+my $first = 1;
+my $file = '';
+my $field = '';
+
+open(F, "debian/control") or croak;
+while(<F>) {
+  chomp();
+  if (/^(\S+):/) {
+    $field = $1;
+  }
+  if ($first) {
+    $file .= $_;
+    $first = 0;
+  } elsif (/^$/) {
+    $file .= "\n";
+  } elsif ($field eq 'Description' || /^[^ ]/ || /^$/) {
+    $file .= "\n" . $_;
+  } else {
+    $file .= $_;
+  }
+}
+close(F);
+
+$file .= "\n";
+
+file =~ s/libzeroc-ice34-dev/libzeroc-ice-dev/g;
+$file =~ s/ice34-translators/zeroc-ice-compilers/g;
+$file =~ s/ice34-slice/zeroc-ice-slice/g;
+$file =~ s/g\+\+\-4\.6, //g;
+
+
+open(F, ">debian/control") or croak;
+print F $file;
+close(F);
+
+$file = '';
+
+
+open(F, "debian/rules") or croak;
+while(<F>) {
+  $file .= $_;
+}
+close(F);
+
+$file .= "\n";
+$file =~ s/QMAKE_CXX=g\+\+\-4\.6 QMAKE_CC=gcc-4\.6 //g;
+
+open(F, ">debian/rules") or croak;
+print F $file;
+close(F);
