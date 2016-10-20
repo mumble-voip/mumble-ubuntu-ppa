@@ -19,9 +19,11 @@ $file =~ s/qt5-default[^,]*/libqt4-dev (>= 4.5.0)/;
 $file =~ s/[ \t]*qttools5-dev-tools[^,]*,\n?//;
 $file =~ s/libqt5opengl5-dev[^,]*/libqt4-opengl-dev (>= 4.5.0)/;
 $file =~ s/[ \t]*libqt5svg5-dev[^,]*,\n?//;
-$file =~ s/ice35/ice34/g;
 $file =~ s/[ \t]*libopus-dev[^,]*,\n?//;
 $file =~ s/libqt5sql5-sqlite/libqt4-sql-sqlite/g;
+$file =~ s/libzeroc-ice-dev/libzeroc-ice34-dev/g;
+$file =~ s/zeroc-ice-compilers/ice34-translators/g;
+$file =~ s/zeroc-ice-slice/ice34-slice/g;
 
 open(F, ">debian/control") or croak;
 print F $file;

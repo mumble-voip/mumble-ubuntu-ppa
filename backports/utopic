@@ -16,6 +16,9 @@ while (<F>) {
 close(F);
 
 $file =~ s/ libopus-dev,\n//g;
+$file =~ s/libzeroc-ice-dev/libzeroc-ice35-dev/g;
+$file =~ s/zeroc-ice-compilers/ice35-translators/g;
+$file =~ s/zeroc-ice-slice/ice35-slice/g;
 
 open(F, ">debian/control") or croak;
 print F $file;
