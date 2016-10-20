@@ -2,7 +2,7 @@
 #
 # Hook for automatic backports.
 #
-# Target dist: Ubuntu Wily
+# Target dist: Ubuntu Xenial
 
 use warnings;
 use strict;
