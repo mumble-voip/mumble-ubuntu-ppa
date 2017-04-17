@@ -1,0 +1,55 @@
+From 9993bba6a0abc93f6eb60e1851367cb605811119 Mon Sep 17 00:00:00 2001
+From: Mikkel Krautz <mikkel@krautz.dk>
+Date: Mon, 17 Apr 2017 16:22:25 +0200
+Subject: [PATCH] Backport PR #3033 to 1.2.x: compiler.pri: add
+ CONFIG(dpkg-buildflags).
+
+Shelling out to dpkg-buildflags to get the preferred build flags
+is now the way to go on Debian.
+
+Previously, our PPA packages used hardening-wrapper to pass the
+proper hardening flags to the package. That package is no longer
+available in Debian unstable or Ubuntu zesty. To remedy that situation,
+we have to add flags ourselves via dpkg-buildflags.
+
+This commit implements a new CONFIG flag, CONFIG(dpkg-buildflags)
+which will query dpkg-buildflags and append the retrieved CFLAGS,
+CXXFLAGS, CPPFLAGS and LDFLAGS to QMAKE_CFLAGS, QMAKE_CXXFLAGS,
+QMAKE_CPPFLAGS, QMAKE_LDFLAGS to ensure they are used in the Mumble
+build.
+---
+ INSTALL      | 4 ++++
+ compiler.pri | 8 ++++++++
+ 2 files changed, 12 insertions(+)
+
+diff --git a/INSTALL b/INSTALL
+index 695aa89..d713be6 100644
+--- a/INSTALL
++++ b/INSTALL
+@@ -157,3 +157,7 @@ CONFIG+=no-xinput2 (Mumble, Linux)
+ CONFIG+=no-xboxinput (Mumble, Win32)
+  Don't build in support for global shortcuts
+  from Xbox controllers via the XInput DLL.
++
++CONFIG+=dpkg-buildflags
++ Add CFLAGS, CXXFLAGS, CPPFLAGS and LDFLAGS
++ from dpkg-buildflags to Mumble's build flags.
+diff --git a/compiler.pri b/compiler.pri
+index 110ed97..455b816 100644
+--- a/compiler.pri
++++ b/compiler.pri
+@@ -111,6 +111,14 @@ unix {
+ }
+ 
+ unix:!macx {
++	CONFIG(dpkg-buildflags) {
++		QMAKE_CFLAGS *= $$system(dpkg-buildflags --get CFLAGS)
++		QMAKE_CXXFLAGS *= $$system(dpkg-buildflags --get CXXFLAGS)
++		QMAKE_CPPFLAGS *= $$system(dpkg-buildflags --get CPPFLAGS)
++		QMAKE_LFLAGS *= $$system(dpkg-buildflags --get LDFLAGS)
++	}
++
++
+ 	CONFIG(debug, debug|release) {
+ 		QMAKE_CFLAGS *= -fstack-protector -fPIE -pie
+ 		QMAKE_CXXFLAGS *= -fstack-protector -fPIE -pie

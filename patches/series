@@ -1,3 +1,4 @@
 05-lsb-description.diff
 06-22d18212acec9e97231a13a6dc02a0c451df9b89.patch
 07-e8f627f8d52eae97ad8aff6bc24209b1a0e9426c.patch
+pr3034-add-dpkg-buildflags.patch
