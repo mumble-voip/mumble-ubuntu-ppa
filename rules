@@ -42,6 +42,7 @@ configure: configure-stamp
 configure-stamp:
 	dh_testdir
 	qmake -recursive main.pro \
+	CONFIG*=dpkg-buildflags \
 	CONFIG*=release \
 	CONFIG*=symbols \
 	CONFIG*=no-embed-qt-translations \
