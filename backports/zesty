@@ -33,7 +33,7 @@ close(F);
 
 $file .= "\n";
 
-file =~ s/libzeroc-ice34-dev/libzeroc-ice-dev/g;
+$file =~ s/libzeroc-ice34-dev/libzeroc-ice-dev/g;
 $file =~ s/ice34-translators/zeroc-ice-compilers/g;
 $file =~ s/ice34-slice/zeroc-ice-slice/g;
 $file =~ s/g\+\+\-4\.6, //g;
