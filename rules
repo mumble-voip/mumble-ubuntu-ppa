@@ -42,6 +42,7 @@ configure: configure-stamp
 configure-stamp:
 	dh_testdir
 	qmake-qt4 QMAKE_CXX=g++-4.6 QMAKE_CC=gcc-4.6 -recursive main.pro \
+	CONFIG*=dpkg-buildflags \
 	CONFIG*=release \
 	CONFIG*=symbols \
 	CONFIG*=no-embed-qt-translations \
