@@ -128,7 +128,7 @@ if [ $BUILD -eq 0 ]; then
 		dput ${TARGET} mumble_${VERSION}${DEBVER}_source.changes
 		rm -rf ${tempdir}
 	else
-		echo "Skipping puload of source.changes in dry run mode."
+		echo "Skipping upload of source.changes in dry run mode."
 		echo "Skipping temp dir removal in dry run mode. Directory is ${tempdir}"
 	fi
 else
