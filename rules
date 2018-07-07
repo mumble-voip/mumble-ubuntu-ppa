@@ -63,7 +63,7 @@ build-arch: build-arch-stamp
 
 build-arch-stamp: configure-stamp
 	$(MAKE) release
-	slice2html -I/usr/share/slice -I/usr/share/Ice-3.4.1/slice -I/usr/share/Ice-3.3.1/slice -I/usr/share/Ice/slice src/murmur/Murmur.ice --output-dir Ice
+	slice2html -I/usr/share/slice -I/usr/share/Ice-3.4.1/slice -I/usr/share/Ice-3.3.1/slice -I/usr/share/ice/slice src/murmur/Murmur.ice --output-dir Ice
 	touch $@
 
 build-indep:
