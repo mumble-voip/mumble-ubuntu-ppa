@@ -37,6 +37,7 @@ Package: mumble
 Architecture: any
 Depends: ${shlibs:Depends},
  ${misc:Depends},
+ libopus0,
  libqt5sql5-sqlite,
  lsb-release
 Suggests: speech-dispatcher,
