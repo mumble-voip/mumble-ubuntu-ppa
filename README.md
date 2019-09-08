@@ -1,11 +1,13 @@
-Mumble Ubuntu PPA template package
-==================================
+# Mumble Ubuntu PPA template package
 
 This git repository contains a template Debian package that we use to
-generate the Mumble PPAs that live on Launchpad: https://launchpad.net/~mumble
+generate the Mumble PPAs that live on Launchpad:
 
-General Idea
-============
+* <https://launchpad.net/~mumble>
+  * <https://launchpad.net/~mumble/+archive/ubuntu/release>
+  * <https://launchpad.net/~mumble/+archive/ubuntu/snapshot>
+
+## General Idea
 
 The idea of this package is to be a base from which packages for various
 Ubuntu PPA builds can be built from.
@@ -37,19 +39,19 @@ a package using the template, use:
  ./ppagen.bash 1.2.4~rc1-8-gb115a29 quantal 1 --dry-run  # drop --dry run to upload
 
 and without dry run, uploaded to the mumble-snapshot PPA
-(which lives at https://launchpad.net/~mumble/+archive/snapshot):
+(which lives at <https://launchpad.net/~mumble/+archive/snapshot>):
 
  ./ppagen.bash 1.2.4~rc1-8-gb115a29 quantal 1 --snapshot  # use --release to upload
                                                           # to the mumble-release PPA
 
 The ppagen.bash script will, when running the above command:
 
- * Download the Mumble tarball for the given version (and a GPG .sig)
- * Verify the signature
- * Clone the mumble-ubuntu-ppa repository into the 'debian' folder
-   in the root of the source tree.
- * Add a new changelog entry for the PPA build.
- * Upload it to the mumble-snapshot PPA (https://launchpad.net/~mumble/+archive/snapshot)
+* Download the Mumble tarball for the given version (and a GPG .sig)
+* Verify the signature
+* Clone the mumble-ubuntu-ppa repository into the 'debian' folder
+  in the root of the source tree.
+* Add a new changelog entry for the PPA build.
+* Upload it to the mumble-snapshot PPA (<https://launchpad.net/~mumble/+archive/snapshot>)
 
 The changelog entry that the script adds will be of the form:
 
