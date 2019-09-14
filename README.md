@@ -32,19 +32,19 @@ Every time the Mumble team updates the template package, one of these template
 entries will be added. The package version number that is used is simply a
 reflection of the current Mumble package at the time of the update.
 
-When building a source package for upload to Launchpad, the ppagen.bash script
+When building a source package for upload to Launchpad, the `ppagen.bash` script
 (which also lives in this repository) can be used. For example, to generate
 a package using the template, use:
 
- ./ppagen.bash 1.2.4~rc1-8-gb115a29 quantal 1 --dry-run  # drop --dry run to upload
+    ./ppagen.bash 1.2.4~rc1-8-gb115a29 quantal 1 --dry-run  # drop --dry run to upload
 
 and without dry run, uploaded to the mumble-snapshot PPA
 (which lives at <https://launchpad.net/~mumble/+archive/snapshot>):
 
- ./ppagen.bash 1.2.4~rc1-8-gb115a29 quantal 1 --snapshot  # use --release to upload
-                                                          # to the mumble-release PPA
+    ./ppagen.bash 1.2.4~rc1-8-gb115a29 quantal 1 --snapshot  # use --release to upload
+                                                             # to the mumble-release PPA
 
-The ppagen.bash script will, when running the above command:
+The `ppagen.bash` script will, when running the above command:
 
 * Download the Mumble tarball for the given version (and a GPG .sig)
 * Verify the signature
@@ -71,7 +71,7 @@ with the latest template changelog entry exactly below it:
 
      -- Mikkel Krautz <mikkel@krautz.dk>  Sat, 03 Feb 2013 14:39:40 +0100
 
-That is, the changelog entry that is added by the ppagen.bash script is merely
+That is, the changelog entry that is added by the `ppagen.bash` script is merely
 a temporary indicator of the fact that a PPA build was performed (oh, and it of
 course also provides the version number to use for the package and the release
 to target).
