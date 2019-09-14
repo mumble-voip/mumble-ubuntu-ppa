@@ -17,7 +17,7 @@ close(F);
 
 $file .= "\n";
 
-$file =~ s/ libg15daemon-client-dev,\n//g;
+$file =~ s/^ libg15daemon-client-dev,\n//gm;
 $file =~ s/ice34-slice/zeroc-ice-slice/g;
 $file =~ s/ice34-translators/zeroc-ice-compilers/g;
 $file =~ s/libzeroc-ice34-dev/libzeroc-ice-dev/g;
