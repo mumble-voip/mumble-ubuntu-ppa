@@ -103,8 +103,8 @@ echo "Debian version set to ${DEBVER}"
 if [ $IN_PLACE -eq 0 ]; then
 	tempdir=$(mktemp -d)
 	cd ${tempdir}
-	wget http://mumble.info/snapshot/mumble-${VERSION}.tar.gz -O mumble_${VERSION}.orig.tar.gz
-	wget http://mumble.info/snapshot/mumble-${VERSION}.tar.gz.sig -O mumble_${VERSION}.orig.tar.gz.sig
+	wget http://dl.mumble.info/mumble-${VERSION}.tar.gz -O mumble_${VERSION}.orig.tar.gz
+	wget http://dl.mumble.info/mumble-${VERSION}.tar.gz.sig -O mumble_${VERSION}.orig.tar.gz.sig
 	gpg --verify mumble_${VERSION}.orig.tar.gz.sig
 	tar -zxf mumble_${VERSION}.orig.tar.gz
 	cd mumble-${VERSION}
