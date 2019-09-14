@@ -31,7 +31,7 @@ Build-Depends: debhelper (>= 7.0.8),
  libxi-dev,
  libcap-dev [linux-any]
 Standards-Version: 3.9.5
-Homepage: http://www.mumble.info/
+Homepage: https://www.mumble.info/
 
 Package: mumble
 Architecture: any
