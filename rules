@@ -50,6 +50,7 @@ configure-stamp:
 	CONFIG*=quiet-build-log \
 	CONFIG*=bundled-celt \
 	CONFIG*=no-bundled-opus \
+	CONFIG*=no-g15 \
 	DEFINES*=NO_UPDATE_CHECK \
 	DEFINES*=PLUGIN_PATH=/usr/lib/mumble \
 	DEFINES*=MUMBLE_VERSION=$(MUMBLE_DEB_VERSION) \
