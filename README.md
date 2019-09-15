@@ -3,9 +3,34 @@
 This git repository contains a template Debian package that we use to
 generate the Mumble PPAs that live on Launchpad:
 
-* <https://launchpad.net/~mumble>
-  * <https://launchpad.net/~mumble/+archive/ubuntu/release>
-  * <https://launchpad.net/~mumble/+archive/ubuntu/snapshot>
+| PPA | Description |
+| --- | --- |
+| [release][ppa-release] | Current stable release of Mumble and Mumble Server |
+| [snapshot][ppa-snapshot] | Current development snapshot of Mumble and Mumble Server for testind and bleeding-edge features and fixes |
+
+The provided packages are the client `mumble` and the server `mumble-server`.
+
+## Context
+
+PPA stands for Personal Package Archive.
+
+While a distribution like Ubuntu prepares and offers official packages (builds) maintained by a dedicated maintainer these packages can become outdated compared to the upstream source project because of the fixed release cycles of the distribution.
+
+Some distributions offer backports package repositories that backport newer program versions to previous OS distribution versions. But a single backports repository will contain a lot of newer packages instead of just the ones you want to explicitly use newer versions of. Manually managing those (with a lower auto-install priority) is possible, but manual work.
+
+PPAs allow third parties like upstream official projects to host their own package archives which can be added to an installations package sources. These PPAs are often more focused on single software packages.
+
+For Mumble we provide a [release][ppa-release] and a [snapshot][ppa-snapshot] repository (under [~mumble][ppa]). The release PPA holds current stable releases for current and older Ubuntu releases. The snapshot PPA holds current development snapshots for testing and bleeding-edge features and fixes.
+
+### PPA package building
+
+Ubuntu uses the Debian apt deb package system.
+
+This repository holds deb package information and scripts for building deb packages, and for uploading them to the PPA.
+
+### Our infrastructure
+
+In our internal build system we have a job named 'Mumble Ubuntu PPA Submitter' that prepares a package source tar ball that is uploaded to launchpad, build on the launchpad build system, and published in the PPAs for numerous Ubuntu versions.
 
 ## General Idea
 
@@ -75,3 +100,7 @@ That is, the changelog entry that is added by the `ppagen.bash` script is merely
 a temporary indicator of the fact that a PPA build was performed (oh, and it of
 course also provides the version number to use for the package and the release
 to target).
+
+[ppa]: https://launchpad.net/~mumble
+[ppa-release]: https://launchpad.net/~mumble/+archive/ubuntu/release
+[ppa-snapshot]: https://launchpad.net/~mumble/+archive/ubuntu/snapshot
