@@ -30,7 +30,7 @@ This repository holds deb package information and scripts for building deb packa
 
 ### Our infrastructure
 
-In our internal build system we have a job named 'Mumble Ubuntu PPA Submitter' that prepares a package source tar ball that is uploaded to launchpad, build on the launchpad build system, and published in the PPAs for numerous Ubuntu versions.
+In our internal build system we have a job named 'Mumble Ubuntu PPA Submitter' that prepares a package source tar ball that is uploaded to launchpad, built on the launchpad build system, and published in the PPAs for numerous Ubuntu versions.
 
 ## General Idea
 

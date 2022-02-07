@@ -28,13 +28,13 @@ function usage() {
 	echo " ppagen.bash 1.2.4~rc1-8-gb115a29 quantal 3 --snapshot  # Build a source package and upload it to the mumble-snapshot PPA."
 	echo " ppagen.bash 1.2.4~rc1-8-gb115a29 quantal 3 --release   # Build a source package and upload it to the mumble-release PPA."
 	echo
-	echo "To build a source pacakge in dry run mode (for local testing):"
+	echo "To build a source package in dry run mode (for local testing):"
 	echo " ppagen.bash 1.2.4~rc1-8-gb115a29 quantal 3 --dry-run   # Build a source package and do not upload it. Results can be inspected."
 	echo
 	echo "To build a binary package (for local testing):"
 	echo " ppagen.bash 1.2.4~rc1-8-gb115a29 quantal 3 --build     # Build a binary package for quantal named 1.2.4~rc1-8-gb115a29-1~ppa3~quantal1"
 	echo
-	echo "It is also possible to do in-place builds, were the script will"
+	echo "It is also possible to do in-place builds, where the script will"
 	echo "not download a tarball from the Mumble web site. Instead, it"
 	echo "expects that the mumble-ubnutu-ppa repo is cloned into a"
 	echo "Mumble source tree (or extracted tarball) as the 'debian'"
