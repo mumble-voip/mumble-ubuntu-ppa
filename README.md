@@ -1,5 +1,36 @@
 # Mumble Ubuntu PPA template package
 
+
+```bash
+./ppagen.bash 1.4.230 focal 1 --release --dry-run
+#             ^<mumbleversion>
+#                     ^ <ubuntu version>
+#                           ^ <ppa release version> (appended to mumble version)
+#                             ^ release or snapshot
+#                                       ^ dry run to build without upload
+```
+
+1. Download release source tar from dl.mumble.info
+2. Verify tar signature
+3. Extract sources from tar
+4. Clone mumble-ubuntu-ppa
+5. Apply distro patches from it
+6. Prepare changelog with `debchange` (or `dch` alias)
+7. Build deb package with `debuild`
+8. Upload with `dput`
+
+Workaround for Windows WSL2 fakeroot not working:
+
+```bash
+sudo update-alternatives --set fakeroot /usr/bin/fakeroot-tcp
+```
+
+The source tar is signed with gpg, so gpg keys have to be imported.
+
+```bash
+gpg --import mumble-auto-build-2022.asc` from <https://github.com/mumble-voip/mumble-gpg-signatures>.
+```
+
 This git repository contains a template Debian package that we use to
 generate the Mumble PPAs that live on Launchpad:
 
