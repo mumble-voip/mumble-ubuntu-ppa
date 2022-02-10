@@ -11,6 +11,7 @@ BUILD=0
 DRY_RUN=0
 IN_PLACE=0
 TARGET=""
+DLSRC=""
 REPO=""
 
 function usage() {
@@ -75,11 +76,19 @@ if [ $BUILD -eq 0 ]; then
 	if [[ "${OPTIONS}" == *"--snapshot"* ]]; then
 		TARGET="mumble-snapshot"
 		echo "Targetting mumble-snapshot PPA"
+
+		if [ $IN_PLACE -eq 0 ]; then
+			DLSRC="https://dl.mumble.info/snapshot"
+		fi
 	fi
 
 	if [[ "${OPTIONS}" == *"--release"* ]]; then
 		TARGET="mumble-release"
 		echo "Targetting mumble-release PPA"
+
+		if [ $IN_PLACE -eq 0 ]; then
+			DLSRC="http://dl.mumble.info/stable"
+		fi
 	fi
 
 	if [ "$TARGET" == "" ]; then
@@ -87,6 +96,12 @@ if [ $BUILD -eq 0 ]; then
 			echo "No target set, please pass either --snapshot or --release to pick the target PPA."
 			exit
 		fi
+	fi
+fi
+
+if [ "$DLSRC" == "" ]; then
+	if [ $IN_PLACE -eq 0 ]; then
+		echo "No target set when not using in-place build. Either --snapshot or --release to pick the source download source."
 	fi
 fi
 
@@ -105,8 +120,8 @@ if [ $IN_PLACE -eq 0 ]; then
 	echo Using temp dir $tempdir...
 	cd ${tempdir}
 
-	wget --no-verbose http://dl.mumble.info/mumble-${VERSION}.tar.gz -O mumble_${VERSION}.orig.tar.gz
-	wget --no-verbose http://dl.mumble.info/mumble-${VERSION}.tar.gz.sig -O mumble_${VERSION}.orig.tar.gz.sig
+	wget --no-verbose ${DLSRC}/mumble-${VERSION}.tar.gz -O mumble_${VERSION}.orig.tar.gz
+	wget --no-verbose ${DLSRC}/mumble-${VERSION}.tar.gz.sig -O mumble_${VERSION}.orig.tar.gz.sig
 	gpg --no-verbose --verify mumble_${VERSION}.orig.tar.gz.sig
 	tar -zxf mumble_${VERSION}.orig.tar.gz
 	cd mumble-${VERSION}
