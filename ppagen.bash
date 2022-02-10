@@ -104,11 +104,13 @@ if [ $IN_PLACE -eq 0 ]; then
 	tempdir=$(mktemp -d)
 	echo Using temp dir $tempdir...
 	cd ${tempdir}
+
 	wget http://dl.mumble.info/mumble-${VERSION}.tar.gz -O mumble_${VERSION}.orig.tar.gz
 	wget http://dl.mumble.info/mumble-${VERSION}.tar.gz.sig -O mumble_${VERSION}.orig.tar.gz.sig
 	gpg --verify mumble_${VERSION}.orig.tar.gz.sig
 	tar -zxf mumble_${VERSION}.orig.tar.gz
 	cd mumble-${VERSION}
+
 	git clone ${REPO} debian
 	if [ -x debian/backports/${DIST} ]; then perl debian/backports/${DIST}; fi
 	cd debian
@@ -127,9 +129,11 @@ if [ $BUILD -eq 0 ]; then
 	echo "Starting build with debuild..."
 	debuild -S -sa
 	cd ../../
+
 	if [ $DRY_RUN -eq 0 ]; then
 		echo "Uploading changes file with dput..."
 		dput ${TARGET} mumble_${VERSION}${DEBVER}_source.changes
+
 		echo "Removing temp dir..."
 		rm -rf ${tempdir}
 	else
