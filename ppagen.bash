@@ -102,6 +102,7 @@ echo "Debian version set to ${DEBVER}"
 
 if [ $IN_PLACE -eq 0 ]; then
 	tempdir=$(mktemp -d)
+	echo Using temp dir $tempdir...
 	cd ${tempdir}
 	wget http://dl.mumble.info/mumble-${VERSION}.tar.gz -O mumble_${VERSION}.orig.tar.gz
 	wget http://dl.mumble.info/mumble-${VERSION}.tar.gz.sig -O mumble_${VERSION}.orig.tar.gz.sig
@@ -119,19 +120,24 @@ else
 	fi
 fi
 
+echo "Calling debchange..."
 dch -v ${VERSION}${DEBVER} -D ${DIST} "PPA Upload of ${VERSION} for Ubuntu ${DIST}"
 
 if [ $BUILD -eq 0 ]; then
+	echo "Starting build with debuild..."
 	debuild -S -sa
 	cd ../../
 	if [ $DRY_RUN -eq 0 ]; then
+		echo "Uploading changes file with dput..."
 		dput ${TARGET} mumble_${VERSION}${DEBVER}_source.changes
+		echo "Removing temp dir..."
 		rm -rf ${tempdir}
 	else
 		echo "Skipping upload of source.changes in dry run mode."
 		echo "Skipping temp dir removal in dry run mode. Directory is ${tempdir}"
 	fi
 else
+	echo "Starting build with debuild..."
 	debuild -us -uc
 	echo "Successfully built mumble ${VERSION}${DEBVER} in ${tempdir}"
 fi
