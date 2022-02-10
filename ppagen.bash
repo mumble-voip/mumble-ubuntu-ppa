@@ -105,8 +105,8 @@ if [ $IN_PLACE -eq 0 ]; then
 	echo Using temp dir $tempdir...
 	cd ${tempdir}
 
-	wget http://dl.mumble.info/mumble-${VERSION}.tar.gz -O mumble_${VERSION}.orig.tar.gz
-	wget http://dl.mumble.info/mumble-${VERSION}.tar.gz.sig -O mumble_${VERSION}.orig.tar.gz.sig
+	wget --no-verbose http://dl.mumble.info/mumble-${VERSION}.tar.gz -O mumble_${VERSION}.orig.tar.gz
+	wget --no-verbose http://dl.mumble.info/mumble-${VERSION}.tar.gz.sig -O mumble_${VERSION}.orig.tar.gz.sig
 	gpg --verify mumble_${VERSION}.orig.tar.gz.sig
 	tar -zxf mumble_${VERSION}.orig.tar.gz
 	cd mumble-${VERSION}
