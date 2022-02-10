@@ -121,7 +121,7 @@ else
 fi
 
 echo "Calling debchange..."
-dch -v ${VERSION}${DEBVER} -D ${DIST} "PPA Upload of ${VERSION} for Ubuntu ${DIST}"
+debchange -v ${VERSION}${DEBVER} -D ${DIST} "PPA Upload of ${VERSION} for Ubuntu ${DIST}"
 
 if [ $BUILD -eq 0 ]; then
 	echo "Starting build with debuild..."
