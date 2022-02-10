@@ -124,7 +124,7 @@ if [ $IN_PLACE -eq 0 ]; then
 	wget --no-verbose ${DLSRC}/mumble-${VERSION}.tar.gz.sig -O mumble_${VERSION}.orig.tar.gz.sig
 	gpg --no-verbose --verify mumble_${VERSION}.orig.tar.gz.sig
 	tar -zxf mumble_${VERSION}.orig.tar.gz
-	cd mumble-${VERSION}
+	cd mumble-${VERSION}.src
 
 	git clone ${REPO} debian
 	if [ -x debian/backports/${DIST} ]; then perl debian/backports/${DIST}; fi
